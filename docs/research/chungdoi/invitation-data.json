@@ -1,0 +1,196 @@
+{
+  "id": "fc9a21a8-aa22-483a-8df4-a26202c94040",
+  "slug": "hoanglong-baongoc-minidarkred",
+  "title": "Hoàng Long & Bảo Ngọc",
+  "data": {
+    "date": "2026-01-03",
+    "time": "18:00",
+    "address": {
+      "en": "",
+      "vi": "Trung Tâm Hội Nghị White Palace, 194 Hoàng Văn Thụ, Phường 9, Quận Phú Nhuận, TP. Hồ Chí Minh",
+      "zh-Hant": ""
+    },
+    "heroPhoto": "https://assets.chungdoi.com/photo-library/design/cdecf6cfe2eeb3cfd63829abde62f1066f10a364ec27d4c997c0f51012c8803e.webp",
+    "ceremonies": [
+      {
+        "id": "ceremony-1",
+        "date": "2026-01-03",
+        "time": "09:00",
+        "header": {
+          "vi": "LỄ THÀNH HÔN ĐƯỢC CỬ HÀNH TẠI\nTƯ GIA"
+        }
+      }
+    ],
+    "templateId": "minimalism_darkred",
+    "banquetTime": "18:00",
+    "brideFather": "Vũ Đức Trung",
+    "brideMother": "Ngô Thị Hạnh",
+    "giftMethods": [
+      {
+        "id": "g1",
+        "for": "groom",
+        "type": "vietqr",
+        "bankBin": "970436",
+        "bankCode": "VCB",
+        "bankName": "Vietcombank",
+        "accountName": "TRAN TUAN KIET",
+        "accountNumber": "1023456789"
+      },
+      {
+        "id": "g2",
+        "for": "bride",
+        "type": "vietqr",
+        "bankBin": "970407",
+        "bankCode": "TCB",
+        "bankName": "Techcombank",
+        "accountName": "LE MINH ANH",
+        "accountNumber": "9988776655"
+      }
+    ],
+    "groomFather": "Đặng Văn Thắng",
+    "groomMother": "Bùi Thị Mai",
+    "showGallery": true,
+    "brideAddress": {
+      "en": "",
+      "vi": "Quận 3, TP. Hồ Chí Minh",
+      "zh-Hant": ""
+    },
+    "ceremonyDate": "2026-01-03",
+    "groomAddress": {
+      "en": "",
+      "vi": "Quận 1, TP. Hồ Chí Minh",
+      "zh-Hant": ""
+    },
+    "musicTrackId": "romantic-011",
+    "showQRInline": false,
+    "showTimeline": true,
+    "thankYouNote": {
+      "en": "",
+      "zh-Hant": ""
+    },
+    "activeLocales": [
+      "vi"
+    ],
+    "brideFullName": "Vũ Bảo Ngọc",
+    "galleryImages": [
+      {
+        "url": "https://assets.chungdoi.com/photo-library/design/abd329aeb24dfdb5db34be2cd39ccbe4b5b0f943f66a89f8c855b2d615cc4e24.webp",
+        "position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      {
+        "url": "https://assets.chungdoi.com/photo-library/design/09c78712bd94460430a8a633a8e72a0576016ea56e183d89d97c551649ee9ece.webp",
+        "position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      {
+        "url": "https://assets.chungdoi.com/photo-library/design/d7695e2fed94d3347e78455624c26164a088b3a365bce422de1ef752fdcab2c1.webp",
+        "position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      {
+        "url": "https://assets.chungdoi.com/photo-library/design/07db56b959aa4410010132a54bfbedd0518e911389a0c6623b946096377bbb97.webp",
+        "position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      {
+        "url": "https://assets.chungdoi.com/photo-library/design/a054d52f9d4d1ed606a4226463f555e359dee874ba7138eab94e10a18b39ddda.webp",
+        "position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      {
+        "url": "https://assets.chungdoi.com/photo-library/design/1cfc881768c6a5c42054d40c4239f4f56b59a159692734f3deb8e79fc55499d2.webp",
+        "position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      {
+        "url": "https://assets.chungdoi.com/photo-library/design/e13655d0de07f307824d9dd1ad5a399434ebc0c016d86aaa4c1bde7452a4abb1.webp",
+        "position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      }
+    ],
+    "galleryLayout": "cards",
+    "groomFullName": "Đặng Hoàng Long",
+    "showDresscode": true,
+    "brideShortName": "Bảo Ngọc",
+    "groomShortName": "Hoàng Long",
+    "timelineEvents": [
+      {
+        "id": "t1",
+        "time": "17:00",
+        "label": {
+          "en": "Welcome guests",
+          "vi": "Đón khách",
+          "zh-Hant": "賓客入場"
+        }
+      },
+      {
+        "id": "t2",
+        "time": "18:00",
+        "label": {
+          "en": "Reception begins",
+          "vi": "Khai tiệc",
+          "zh-Hant": "婚宴開席"
+        }
+      },
+      {
+        "id": "t3",
+        "time": "18:30",
+        "label": {
+          "en": "Wedding ceremony",
+          "vi": "Nghi thức cưới",
+          "zh-Hant": "婚禮儀式"
+        }
+      },
+      {
+        "id": "t4",
+        "time": "19:00",
+        "label": {
+          "en": "Cake cutting & toast",
+          "vi": "Cắt bánh & nâng ly",
+          "zh-Hant": "切蛋糕與敬酒"
+        }
+      },
+      {
+        "id": "t5",
+        "time": "20:30",
+        "label": {
+          "en": "Farewell",
+          "vi": "Kết thúc tiệc",
+          "zh-Hant": "婚宴圓滿"
+        }
+      }
+    ],
+    "dresscodeColors": [
+      "#511419",
+      "#8C3A3F",
+      "#C9A24A",
+      "#ECE4D8"
+    ],
+    "giftDisplayMode": "envelope",
+    "guestReceptionTime": "17:30",
+    "customAnnouncementText": {
+      "en": "",
+      "zh-Hant": ""
+    }
+  },
+  "is_demo": true,
+  "is_paid": true,
+  "og_fields_updated_at": "2026-09-17T16:20:48.727Z",
+  "updated_at": "2026-09-17T16:20:48.727Z",
+  "created_at": "2026-09-17T16:20:48.727Z"
+}

@@ -1,0 +1,174 @@
+/* Chung Đôi — Minimalism Đỏ Đậm theme (scoped to .cd-root).
+   Palette taken from the source theme's representative colors. */
+
+.cd-root {
+  --cd-wine: #511419;
+  --cd-wine-soft: #6b1f26;
+  --cd-brick: #8c3a3f;
+  --cd-gold: #c9a24a;
+  --cd-gold-soft: #d8b96e;
+  --cd-cream: #ece4d8;
+  --cd-cream-deep: #e3d8c7;
+  --cd-paper: #f6f1e7;
+  --cd-ink: #3a2326;
+
+  --cd-serif: var(--font-cd-serif), "EB Garamond", "Times New Roman", serif;
+  --cd-script: var(--font-cd-script), "Beau Rivage", cursive;
+
+  color: var(--cd-ink);
+  font-family: var(--cd-serif);
+  background-color: #2a0d10;
+}
+
+/* The invitation is a phone-width card on a deep-wine stage. */
+.cd-stage {
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background:
+    radial-gradient(130% 80% at 50% 0%, #4a1216 0%, #2a0d10 55%, #1c080a 100%);
+}
+
+.cd-card {
+  position: relative;
+  width: 100%;
+  max-width: 30rem;
+  background-color: var(--cd-paper);
+  background-image: url("/sites/chungdoi/theme/paper.webp");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: multiply;
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Paper tint so photos/decorations sit on a warm cream field. */
+.cd-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--cd-cream);
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 0;
+}
+.cd-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Typography helpers */
+.cd-script {
+  font-family: var(--cd-script);
+  font-weight: 400;
+  line-height: 1;
+}
+.cd-serif {
+  font-family: var(--cd-serif);
+}
+.cd-eyebrow {
+  font-family: var(--cd-serif);
+  text-transform: uppercase;
+  letter-spacing: 0.42em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--cd-brick);
+}
+.cd-heading {
+  font-family: var(--cd-serif);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cd-wine);
+}
+
+/* Thin gold rule / ornaments */
+.cd-rule {
+  width: 1px;
+  background: linear-gradient(var(--cd-gold), transparent);
+}
+.cd-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: var(--cd-gold);
+}
+.cd-divider::before,
+.cd-divider::after {
+  content: "";
+  height: 1px;
+  width: 2.5rem;
+  background: linear-gradient(90deg, transparent, var(--cd-gold));
+}
+.cd-divider::after {
+  background: linear-gradient(90deg, var(--cd-gold), transparent);
+}
+
+/* Scroll reveal */
+.cd-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.cd-reveal.cd-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cd-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Decorative floating peony */
+.cd-petal-float {
+  animation: cd-sway 9s ease-in-out infinite;
+}
+@keyframes cd-sway {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1.5deg); }
+}
+
+/* Envelope cover */
+.cd-seal-pulse {
+  animation: cd-seal 2.6s ease-in-out infinite;
+}
+@keyframes cd-seal {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+/* Slow ken-burns for hero */
+.cd-kenburns {
+  animation: cd-kenburns 18s ease-in-out infinite alternate;
+}
+@keyframes cd-kenburns {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+
+/* Spinning vinyl-style music button */
+.cd-spin {
+  animation: cd-spin 6s linear infinite;
+}
+.cd-spin.cd-paused {
+  animation-play-state: paused;
+}
+@keyframes cd-spin {
+  to { transform: rotate(360deg); }
+}
+
+.cd-fade-in {
+  animation: cd-fade 0.9s ease both;
+}
+@keyframes cd-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

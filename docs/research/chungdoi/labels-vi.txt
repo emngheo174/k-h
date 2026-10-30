@@ -1,0 +1,88 @@
+groomFullName  ::  Họ tên chú rể   |EN: Groom Name
+brideFullName  ::  Họ tên cô dâu   |EN: Bride Name
+groomFather  ::  Họ tên cha chú rể   |EN: Groom's Father
+groomMother  ::  Họ tên mẹ chú rể   |EN: Groom's Mother
+brideFather  ::  Họ tên cha cô dâu   |EN: Bride's Father
+brideMother  ::  Họ tên mẹ cô dâu   |EN: Bride's Mother
+groomBirthOrder  ::  Trưởng Nam   |EN: Groom
+brideBirthOrder  ::  Út Nữ   |EN: Bride
+groomParentTitle  ::  Ông Bà   |EN: Mr. & Mrs.
+brideParentTitle  ::  Ông Bà   |EN: Mr. & Mrs.
+sponsorTitle  ::  Người Đỡ Đầu   |EN: Wedding Sponsors
+ceremonyHeader  ::  LỄ THÀNH HÔN ĐƯỢC CỬ HÀNH TẠI\nTƯ GIA   |EN: WEDDING CEREMONY AT\nFAMILY HOME
+customAnnouncementText  ::  TRÂN TRỌNG BÁO TIN\nLỄ THÀNH HÔN CỦA CON CHÚNG TÔI   |EN: WE JOYFULLY ANNOUNCE\nTHE WEDDING OF OUR CHILDREN
+thankYouNote  ::  Sự hiện diện của quý khách là niềm vinh hạnh của gia đình chúng tôi!   |EN: Your presence would be the greatest gift we could receive!
+guestbook  ::  Sổ lưu bút   |EN: Guestbook
+countdown  ::  Cùng đếm ngược   |EN: Countdown
+weddingAlbum  ::  Album Ảnh   |EN: Photo Gallery
+addToCalendar  ::  Thêm vào lịch   |EN: Add to Calendar
+giftBox  ::  Hộp Mừng Cưới   |EN: Wedding Gift
+guestReception  ::  Đón khách   |EN: Welcome
+partyStart  ::  Khai tiệc   |EN: Reception
+receptionAt  ::  Tiệc cưới sẽ diễn ra vào lúc:   |EN: The reception will take place at:
+atTime  ::  VÀO LÚC   |EN: AT
+partyVenueTitle  ::  Tiệc cưới sẽ tổ chức tại   |EN: Wedding Reception Venue
+mapTitle  ::  BẢN ĐỒ   |EN: MAP
+ceremonyInfoTitle  ::  THÔNG TIN LỄ CƯỚI   |EN: CEREMONY INFO
+receptionInfoTitle  ::  THÔNG TIN TIỆC CƯỚI   |EN: RECEPTION INFO
+timelineTitle  ::  LỊCH TRÌNH NGÀY CƯỚI   |EN: WEDDING DAY SCHEDULE
+heroTitle  ::  Câu Chuyện Tình Yêu   |EN: THE STORY of LOVE
+noWishesYet  ::  Chưa có lời chúc nào. Hãy là người đầu tiên!   |EN: No wishes yet. Be the first!
+submitWishText  ::  GỬI LỜI CHÚC   |EN: SEND WISHES
+submittingText  ::  ĐANG GỬI...   |EN: SUBMITTING...
+wishSavedText  ::  Cảm ơn bạn! Lời chúc đã được lưu.   |EN: Thank you! Your wish has been saved.
+guestNamePlaceholder  ::  Nhập tên*   |EN: Enter your name*
+guestWishPlaceholder  ::  Nhập lời chúc*   |EN: Enter your wishes*
+rsvpButton  ::  XÁC NHẬN   |EN: CONFIRM
+rsvpTitle  ::  Xác nhận tham dự   |EN: Confirm your attendance
+rsvpSubtitle  ::  Sự hiện diện của {{salutation}} là niềm vinh hạnh cho gia đình chúng tôi. Xin xác nhận để chúng tôi chuẩn bị chu đáo nhất.   |EN: Your presence would be an honor. Please RSVP so we can prepare the warmest welcome for you.
+rsvpNameLabel  ::  Tên của {{salutation}}   |EN: Your name
+rsvpNamePlaceholder  ::  Nhập tên của {{salutation}}   |EN: Enter your name
+rsvpAttendQuestion  ::  {{Salutation}} sẽ đến chứ?   |EN: Will you attend?
+rsvpAttendYes  ::  Tôi sẽ đến   |EN: I will attend
+rsvpAttendNo  ::  Rất tiếc, tôi không thể đến   |EN: Sorry, I can't make it
+rsvpGuestCountLabel  ::  Số lượng khách (bao gồm {{salutation}})   |EN: Number of guests (including you)
+rsvpGuestCountMaxHint  ::  Tối đa {{max}} người   |EN: Up to {{max}} people
+rsvpMessageLabel  ::  Lời nhắn cho cô dâu chú rể   |EN: Message to the couple
+rsvpMessagePlaceholder  ::  Để lại lời nhắn (không bắt buộc)   |EN: Leave a note (optional)
+rsvpTextAnswerPlaceholder  ::  Nhập câu trả lời của bạn...   |EN: Type your answer...
+rsvpQuestionYes  ::  Có   |EN: Yes
+rsvpQuestionNo  ::  Không   |EN: No
+rsvpSendingText  ::  Đang gửi...   |EN: Sending...
+rsvpSubmitText  ::  Gửi xác nhận   |EN: Confirm
+rsvpThankYouTitle  ::  Cảm ơn {{salutation}}!   |EN: Thank you!
+rsvpConfirmationReceivedText  ::  Chúng tôi đã nhận được xác nhận của {{salutation}}.   |EN: We have received your confirmation.
+rsvpLookForwardText  ::  Rất mong được gặp {{salutation}} trong ngày trọng đại!   |EN: We look forward to seeing you on our special day!
+rsvpDeclineMessageText  ::  Cảm ơn {{salutation}} đã hồi âm. Chúc {{salutation}} thật nhiều niềm vui và sức khỏe!   |EN: Thank you for letting us know. Wishing you joy and good health!
+rsvpCloseText  ::  Đóng   |EN: Close
+rsvpErrorText  ::  Có lỗi xảy ra. Vui lòng thử lại.   |EN: Something went wrong. Please try again.
+groomLabel  ::  Chú Rể   |EN: Groom
+brideLabel  ::  Cô Dâu   |EN: Bride
+giftBoxThankYou  ::  Cảm ơn bạn đã đồng hành cùng chúng mình trong ngày trọng đại!   |EN: Thank you for being part of our special day!
+tapToOpen  ::  Nhấn để mở   |EN: Tap to open
+saveQR  ::  Lưu QR   |EN: Save QR
+saveQRFallback  ::  Nhấn giữ vào mã QR để lưu ảnh nhé   |EN: Press and hold the QR to save it
+giftBoxLegacyLabel  ::  Mừng Cưới   |EN: Wedding Gift
+groomNamePlaceholder  ::  Tên chú rể   |EN: Groom name
+brideNamePlaceholder  ::  Tên cô dâu   |EN: Bride name
+envelopeGreeting  ::  Thân Mời   |EN: Cordially Invites
+envelopeInviteMessage  ::  Đến dự buổi tiệc chung vui cùng gia đình   |EN: to celebrate with our family
+envelopeOpenButton  ::  Mở thiệp   |EN: Open
+qrScanText  ::  Quét mã để gửi mừng cưới   |EN: Scan to send wedding gift
+quote  ::  Hạnh phúc không phải là điểm đến, mà là con đường chúng ta đi cùng nhau.   |EN: Happiness is not a destination, but a journey we walk together.
+dresscodeTitle  ::  DRESS CODE   |EN: DRESS CODE
+dresscodeSubtitle  ::  Trang phục dự tiệc   |EN: Party Attire
+receptionInfoTitle  ::  THÔNG TIN TIỆC BÁO HỶ   |EN: CELEBRATION PARTY INFO
+receptionAt  ::  Tiệc báo hỷ sẽ diễn ra vào lúc:   |EN: The celebration will take place at:
+partyVenueTitle  ::  Tiệc báo hỷ sẽ tổ chức tại   |EN: Celebration Party Venue
+timelineTitle  ::  LỊCH TRÌNH TIỆC BÁO HỶ   |EN: CELEBRATION DAY SCHEDULE
+ceremonyInfoTitle  ::  THÔNG TIN BUỔI LỄ   |EN: EVENT INFO
+receptionInfoTitle  ::  THÔNG TIN LỄ ĐÍNH HÔN   |EN: ENGAGEMENT PARTY INFO
+receptionAt  ::  Lễ đính hôn sẽ diễn ra vào lúc:   |EN: The engagement party will take place at:
+partyVenueTitle  ::  Lễ đính hôn sẽ tổ chức tại   |EN: Engagement Party Venue
+timelineTitle  ::  LỊCH TRÌNH LỄ ĐÍNH HÔN   |EN: ENGAGEMENT DAY SCHEDULE
+ceremonyInfoTitle  ::  THÔNG TIN LỄ ĐÍNH HÔN   |EN: ENGAGEMENT CEREMONY INFO
+customAnnouncementText  ::  TRÂN TRỌNG BÁO TIN\nLỄ ĐÍNH HÔN CỦA CON CHÚNG TÔI   |EN: WE JOYFULLY ANNOUNCE\nTHE ENGAGEMENT OF OUR CHILDREN
+giftBox  ::  Hộp Quà Mừng   |EN: Gift Box
+giftBoxLegacyLabel  ::  Quà Mừng   |EN: Gift
+qrScanText  ::  Quét mã để gửi quà mừng   |EN: Scan to send a gift
