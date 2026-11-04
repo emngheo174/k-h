@@ -1,7 +1,7 @@
 {
   "id": "fc9a21a8-aa22-483a-8df4-a26202c94040",
-  "slug": "hoanglong-baongoc-minidarkred",
-  "title": "Hoàng Long & Bảo Ngọc",
+  "slug": "trungkien-honghanh-minidarkred",
+  "title": "Trung Kiên & Hồng Hạnh",
   "data": {
     "date": "2026-01-03",
     "time": "18:00",
@@ -71,7 +71,7 @@
     "activeLocales": [
       "vi"
     ],
-    "brideFullName": "Vũ Bảo Ngọc",
+    "brideFullName": "Vũ Hồng Hạnh",
     "galleryImages": [
       {
         "url": "https://assets.chungdoi.com/photo-library/design/abd329aeb24dfdb5db34be2cd39ccbe4b5b0f943f66a89f8c855b2d615cc4e24.webp",
@@ -124,10 +124,10 @@
       }
     ],
     "galleryLayout": "cards",
-    "groomFullName": "Đặng Hoàng Long",
+    "groomFullName": "Trung Kiên",
     "showDresscode": true,
-    "brideShortName": "Bảo Ngọc",
-    "groomShortName": "Hoàng Long",
+    "brideShortName": "Hồng Hạnh",
+    "groomShortName": "Trung Kiên",
     "timelineEvents": [
       {
         "id": "t1",

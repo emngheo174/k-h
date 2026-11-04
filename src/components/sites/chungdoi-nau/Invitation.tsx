@@ -38,8 +38,8 @@ export function Invitation() {
         <Gallery />
         <PartyCard />
         <Venue />
-        <Dresscode />
-        <Timeline />
+        {/* <Dresscode /> */}
+        {/* <Timeline /> */}
         <Guestbook />
         <Gift />
         <Footer />

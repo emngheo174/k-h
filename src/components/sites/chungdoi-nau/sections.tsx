@@ -66,7 +66,7 @@ export function Hero() {
           <img
             src={invitation.heroPhoto}
             alt={`${invitation.groomShortName} & ${invitation.brideShortName}`}
-            className="h-full w-full object-cover"
+            className="h-full w-full"
           />
         </div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -347,11 +347,6 @@ export function Footer() {
           {t.thankYouNote}
         </p>
       </footer>
-      <div className="relative z-20 flex items-center justify-center pb-3">
-        <span className="text-xs uppercase tracking-[0.3em]" style={{ color: "var(--cdn-primary)", opacity: 0.7 }}>
-          {t.brand}
-        </span>
-      </div>
     </>
   );
 }
