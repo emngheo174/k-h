@@ -1,0 +1,189 @@
+// Invitation data for the Chung Đôi "Minimalism Nâu" (minimalism_brown) demo clone.
+// Extracted verbatim from the source page's embedded RSC payload and template module.
+// Source: https://chungdoi.com/vi/mau-thiep/minimalism-nau/demo
+
+export interface GiftMethod {
+  id: string;
+  for: "groom" | "bride";
+  bankBin: string;
+  bankCode: string;
+  bankName: string;
+  accountName: string;
+  accountNumber: string;
+}
+
+export interface TimelineEvent {
+  id: string;
+  time: string;
+  label: string;
+}
+
+export interface GalleryImage {
+  src: string;
+  position: { x: number; y: number };
+}
+
+export interface InvitationData {
+  groomFullName: string;
+  groomShortName: string;
+  groomFather: string;
+  groomMother: string;
+  groomAddress: string;
+  brideFullName: string;
+  brideShortName: string;
+  brideFather: string;
+  brideMother: string;
+  brideAddress: string;
+  date: string; // ISO YYYY-MM-DD
+  banquetTime: string; // HH:mm
+  guestReceptionTime: string; // HH:mm
+  ceremonyTime: string; // HH:mm
+  ceremonyHeader: string;
+  address: string;
+  heroPhoto: string;
+  galleryImages: GalleryImage[];
+  timelineEvents: TimelineEvent[];
+  dresscodeColors: string[];
+  giftMethods: GiftMethod[];
+  music: { url: string; title: string; artist: string };
+}
+
+export const invitation: InvitationData = {
+  groomFullName: "Mai Trung Kiên",
+  groomShortName: "Trung Kiên",
+  groomFather: "Mai Thanh Sơn",
+  groomMother: "Bùi Thị Nga",
+  groomAddress: "Số 11 đường Đinh Gia Quế, phường Sơn Nam, Hưng Yên",
+  brideFullName: "Đào Hồng Hạnh",
+  brideShortName: "Hồng Hạnh",
+  brideFather: "Đào Văn Quý",
+  brideMother: "Hoàng Thị Chiên",
+  brideAddress: "Xã Kim Bình, Tuyên Quang",
+  date: "2026-11-29",
+  banquetTime: "18:00",
+  guestReceptionTime: "10:30",
+  ceremonyTime: "09:00",
+  ceremonyHeader: "LỄ THÀNH HÔN ĐƯỢC CỬ HÀNH TẠI\nTƯ GIA",
+  address:
+    "Số 11 đường Đinh Gia Quế, phường Sơn Nam, Hưng Yên",
+  heroPhoto: "/sites/chungdoi-nau/gallery/hero.webp",
+  galleryImages: [
+    { src: "/sites/chungdoi-nau/gallery/gallery-1.webp", position: { x: 0.5, y: 0.5 } },
+    { src: "/sites/chungdoi-nau/gallery/gallery-2.webp", position: { x: 0.5, y: 0.5 } },
+    { src: "/sites/chungdoi-nau/gallery/gallery-3.webp", position: { x: 0.5, y: 0.5 } },
+    { src: "/sites/chungdoi-nau/gallery/gallery-4.webp", position: { x: 0.5, y: 0.5 } },
+    { src: "/sites/chungdoi-nau/gallery/gallery-5.webp", position: { x: 0.5, y: 0.5 } },
+    { src: "/sites/chungdoi-nau/gallery/gallery-6.webp", position: { x: 0.5, y: 0.5 } },
+    { src: "/sites/chungdoi-nau/gallery/gallery-7.webp", position: { x: 0.5, y: 0.5 } },
+  ],
+  timelineEvents: [
+    { id: "t1", time: "17:00", label: "Đón khách" },
+    { id: "t2", time: "18:00", label: "Khai tiệc" },
+    { id: "t3", time: "18:30", label: "Nghi thức cưới" },
+    { id: "t4", time: "19:00", label: "Cắt bánh & nâng ly" },
+    { id: "t5", time: "20:30", label: "Kết thúc tiệc" },
+  ],
+  dresscodeColors: ["#001A08", "#E1BC7C", "#3B5D3B", "#F5E6C8"],
+  giftMethods: [
+    {
+      id: "g1",
+      for: "groom",
+      bankBin: "970436",
+      bankCode: "VCB",
+      bankName: "Vietcombank",
+      accountName: "MAI TRUNG KIEN",
+      accountNumber: "1023456789",
+    },
+    {
+      id: "g2",
+      for: "bride",
+      bankBin: "970407",
+      bankCode: "TCB",
+      bankName: "Techcombank",
+      accountName: "DAO HONG HANH",
+      accountNumber: "9988776655",
+    },
+  ],
+  music: {
+    // Source trackId "upbeat-008" is served from Chung Đôi's private music API and
+    // isn't resolvable to a static URL; a local placeholder track is wired in.
+    url: "/sites/chungdoi-nau/audio/music.mp3",
+    title: "Nhạc nền",
+    artist: "upbeat-008",
+  },
+};
+
+// UI strings (verbatim Vietnamese labels from the source i18n bundle).
+export const t = {
+  envelopeGreeting: "Thân Mời",
+  envelopeOpenButton: "Mở thiệp",
+  eventHeading: "SAVE THE DATE",
+  announcement: "TRÂN TRỌNG BÁO TIN\nLỄ THÀNH HÔN CỦA CON CHÚNG TÔI",
+  groomSide: "NHÀ TRAI",
+  brideSide: "NHÀ GÁI",
+  groomBirthOrder: "Trưởng Nam",
+  brideBirthOrder: "Út Nữ",
+  groomLabel: "Chú Rể",
+  brideLabel: "Cô Dâu",
+  parentFather: "Ông",
+  parentMother: "Bà",
+  ceremonyInfoTitle: "THÔNG TIN LỄ CƯỚI",
+  receptionInfoTitle: "THÔNG TIN TIỆC CƯỚI",
+  atTime: "VÀO LÚC",
+  mapTitle: "BẢN ĐỒ",
+  addToCalendar: "Thêm vào lịch",
+  viewDirections: "Xem chỉ đường",
+  countdown: "Cùng đếm ngược",
+  countdownUnits: { days: "Ngày", hours: "Giờ", minutes: "Phút", seconds: "Giây" },
+  timelineTitle: "LỊCH TRÌNH NGÀY CƯỚI",
+  albumTitle: "Album ảnh cưới",
+  dresscodeTitle: "DRESS CODE",
+  dresscodeSubtitle: "Trang phục dự tiệc",
+  giftTitle: "MỪNG CƯỚI",
+  giftThankYou:
+    "Cảm ơn bạn đã đồng hành cùng chúng mình trong ngày trọng đại!",
+  tapToOpen: "Nhấn để mở",
+  qrScanText: "Quét mã để gửi mừng cưới",
+  rsvpTitle: "Xác nhận tham dự",
+  rsvpSubtitle:
+    "Sự hiện diện của bạn là niềm vinh hạnh cho gia đình chúng tôi. Xin xác nhận để chúng tôi chuẩn bị chu đáo nhất.",
+  rsvpButton: "Xác nhận tham dự",
+  rsvpNameLabel: "Tên của bạn",
+  rsvpNamePlaceholder: "Nhập tên của bạn",
+  rsvpAttendQuestion: "Bạn sẽ đến chứ?",
+  rsvpAttendYes: "Tôi sẽ đến",
+  rsvpAttendNo: "Rất tiếc, tôi không thể đến",
+  rsvpGuestCountLabel: "Số lượng khách (bao gồm bạn)",
+  rsvpMessageLabel: "Lời nhắn cho cô dâu chú rể",
+  rsvpMessagePlaceholder: "Để lại lời nhắn (không bắt buộc)",
+  rsvpSubmitText: "Gửi xác nhận",
+  rsvpSendingText: "Đang gửi...",
+  rsvpThankYouTitle: "Cảm ơn bạn!",
+  rsvpConfirmationReceivedText: "Chúng tôi đã nhận được xác nhận của bạn.",
+  rsvpLookForwardText: "Rất mong được gặp bạn trong ngày trọng đại!",
+  rsvpDeclineMessageText:
+    "Cảm ơn bạn đã hồi âm. Chúc bạn thật nhiều niềm vui và sức khỏe!",
+  rsvpCloseText: "Đóng",
+  guestbook: "SỔ LƯU BÚT",
+  submitWishText: "Gửi lời chúc",
+  noWishesYet: "Chưa có lời chúc nào. Hãy là người đầu tiên!",
+  guestNamePlaceholder: "Nhập tên*",
+  guestWishPlaceholder: "Nhập lời chúc*",
+  wishSavedText: "Cảm ơn bạn! Lời chúc đã được lưu.",
+  thankYouNote:
+    "Sự hiện diện của quý khách là niềm vinh hạnh của gia đình chúng tôi!",
+  brand: "Chung Đôi",
+};
+
+export const WEEKDAYS_VI = [
+  "Chủ Nhật",
+  "Thứ Hai",
+  "Thứ Ba",
+  "Thứ Tư",
+  "Thứ Năm",
+  "Thứ Sáu",
+  "Thứ Bảy",
+];
+
+// Mini-calendar weekday headers (Mon-first, matching the source party calendar).
+export const CAL_WEEKDAYS_VI = ["T2", "T3", "T4", "T5", "T6", "T7", "CN"];

@@ -1,0 +1,169 @@
+/* Chung Đôi — Minimalism Nâu (minimalism_brown) theme, scoped to .cdn-root.
+   Palette and fonts taken verbatim from the source template module. */
+
+.cdn-root {
+  /* Palette (from template module `p`) */
+  --cdn-primary: #7c6a60;
+  --cdn-muted: #918077;
+  --cdn-eyebrow: #827771;
+  --cdn-card-fill: #f6eadd;
+  --cdn-light: #ded9d7;
+  --cdn-calendar-bg: #7c6a60;
+  --cdn-page-bg: #fff7f3;
+
+  /* Envelope / landing */
+  --cdn-env-top: #f3e6da;
+  --cdn-env-mid: #e8d5c4;
+  --cdn-env-bot: #dcc6b2;
+  --cdn-env-card: rgba(255, 250, 245, 0.96);
+
+  /* Font stacks (match source: x/f/u/y + couple fonts) */
+  --cdn-serif: "Times New Roman", Times, ChungDoiIndic, serif; /* x */
+  --cdn-baskerville: "Baskerville", var(--font-cdn-baskerville), "Times New Roman",
+    ChungDoiIndic, serif; /* f */
+  --cdn-cormorant: var(--font-cdn-cormorant), "Cormorant Garamond",
+    "Times New Roman", serif; /* u */
+  --cdn-nautigal: var(--font-cdn-nautigal), "The Nautigal", cursive; /* y */
+  --cdn-garamond: var(--font-cdn-garamond), "EB Garamond", "Times New Roman",
+    serif;
+  --cdn-msmadi: var(--font-cdn-msmadi), "Ms Madi", cursive;
+  --cdn-lora: var(--font-cdn-lora), "Lora", "Times New Roman", serif;
+
+  color: var(--cdn-primary);
+  font-family: var(--cdn-serif);
+  background-color: #efe3d7;
+}
+
+/* Stage behind the phone-width card */
+.cdn-stage {
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: #efe3d7;
+}
+
+.cdn-card {
+  position: relative;
+  width: 100%;
+  max-width: 40rem;
+  background-color: var(--cdn-page-bg);
+  color: var(--cdn-primary);
+  overflow: hidden;
+  isolation: isolate;
+}
+@media (min-width: 768px) {
+  .cdn-card {
+    border: 1px solid #7c6a6022;
+  }
+}
+
+/* Full-card paper texture overlay (template `g`) */
+.cdn-paper-overlay {
+  background-image: url("/sites/chungdoi-nau/theme/paper.webp");
+  background-size: 100% auto;
+  background-position: top center;
+  mix-blend-mode: multiply;
+  opacity: 0.4;
+}
+
+/* Section titles */
+.cdn-title {
+  font-family: var(--cdn-serif);
+  color: var(--cdn-primary);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* ---------- Envelope animations ---------- */
+
+/* Ambient falling leaves (envelope). Each leaf sets --sway + its own
+   duration/delay/left/font-size inline, matching the source. */
+@keyframes cdn-ambient-fall {
+  0% {
+    transform: translateY(-10vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: var(--leaf-opacity, 0.85);
+  }
+  50% {
+    transform: translateY(45vh) translateX(var(--sway, 8px)) rotate(180deg);
+  }
+  92% {
+    opacity: var(--leaf-opacity, 0.85);
+  }
+  100% {
+    transform: translateY(108vh) translateX(calc(var(--sway, 8px) * -1))
+      rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes cdn-seal-pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+@keyframes cdn-shine {
+  0% {
+    transform: translateX(-60px);
+  }
+  60%,
+  100% {
+    transform: translateX(240px);
+  }
+}
+
+/* Floating decorations inside the card (template mbFloat) */
+@keyframes cdn-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes cdn-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.cdn-fade-in {
+  animation: cdn-fade 0.5s ease both;
+}
+
+/* Spinning music disc */
+@keyframes cdn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.cdn-spin {
+  animation: cdn-spin 6s linear infinite;
+}
+.cdn-spin.cdn-paused {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cdn-float-anim,
+  .cdn-seal-anim,
+  .cdn-shine-anim,
+  .cdn-leaf-anim,
+  .cdn-spin {
+    animation: none !important;
+  }
+}
