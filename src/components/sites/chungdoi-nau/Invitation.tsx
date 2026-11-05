@@ -18,6 +18,7 @@ import {
 
 export function Invitation() {
   const [open, setOpen] = useState(false);
+  const [shaking, setShaking] = useState(false);
 
   // Lock scroll while the envelope cover is showing.
   useEffect(() => {
@@ -26,6 +27,13 @@ export function Invitation() {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  // Shake the card briefly, then reveal the invitation.
+  const handleOpen = () => {
+    if (open || shaking) return;
+    setShaking(true);
+    window.setTimeout(() => setOpen(true), 650);
+  };
 
   return (
     <div className="cdn-stage">
@@ -45,7 +53,7 @@ export function Invitation() {
         <Footer />
       </main>
 
-      <Envelope open={open} onOpen={() => setOpen(true)} />
+      <Envelope open={open} shaking={shaking} onOpen={handleOpen} />
       <MusicPlayer playing={open} />
     </div>
   );

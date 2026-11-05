@@ -1,11 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { invitation, t } from "./data";
 import { ASSETS, BgDeco } from "./shared";
 
 const AUTO_MS = 1400;
-const DEFAULT_AR = 0.7;
+/** Uniform portrait frame so landscape + portrait photos share one card size. */
+const FRAME_AR = 0.72;
 
 /** Coverflow "cards" gallery slider (source template component `eS`). */
 export function Gallery() {
@@ -17,7 +19,6 @@ export function Gallery() {
   const [visible, setVisible] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [reduced, setReduced] = useState(false);
-  const [ratios, setRatios] = useState<Record<number, number>>({});
 
   const stageRef = useRef<HTMLDivElement | null>(null);
   const touch = useRef<{ x: number; y: number } | null>(null);
@@ -180,7 +181,11 @@ export function Gallery() {
                 const isCenter = l === 0;
                 const scale = Math.max(0.7, 1 - 0.15 * o);
                 const opacity = Math.max(0.3, 1 - 0.25 * o);
-                const ar = Math.min(1.2, Math.max(0.5, ratios[i] ?? DEFAULT_AR));
+                // The active card stays flat (no 3D transform) so it renders crisp;
+                // only side cards get the coverflow tilt/depth.
+                const transform = isCenter
+                  ? "translateX(0) scale(1)"
+                  : `translateX(${60 * l}%) translateZ(${-(150 * o)}px) rotateY(${45 * l}deg) scale(${scale})`;
                 return (
                   <div
                     key={`cover-${i}`}
@@ -195,27 +200,22 @@ export function Gallery() {
                       isCenter ? "ring-2 ring-white/30" : ""
                     }`}
                     style={{
-                      aspectRatio: ar,
+                      aspectRatio: FRAME_AR,
                       transitionDuration: "1100ms",
-                      transform: `translateX(${60 * l}%) translateZ(${-(150 * o)}px) rotateY(${45 * l}deg) scale(${scale})`,
+                      transform,
                       opacity,
                       zIndex: 100 - o,
                     }}
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                       src={img.src}
                       alt={`Ảnh cưới ${i + 1}`}
-                      loading="lazy"
-                      className="h-full w-full object-cover"
+                      fill
+                      sizes="(min-width: 768px) 360px, 260px"
+                      quality={90}
+                      className="object-cover"
                       style={{
                         objectPosition: `${img.position.x * 100}% ${img.position.y * 100}%`,
-                      }}
-                      onLoad={(e) => {
-                        const el = e.currentTarget;
-                        if (!el.naturalWidth || !el.naturalHeight) return;
-                        const r = el.naturalWidth / el.naturalHeight;
-                        setRatios((prev) => (prev[i] ? prev : { ...prev, [i]: r }));
                       }}
                     />
                   </div>
@@ -277,15 +277,16 @@ export function Gallery() {
             ‹
           </button>
           <div
-            className="max-h-[85vh] max-w-[90vw] overflow-hidden rounded-md ring-2"
-            style={{ ["--tw-ring-color" as string]: "#7c6a60" }}
+            className="relative h-[85vh] w-[90vw]"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src={imgs[active].src}
               alt={`Ảnh cưới ${active + 1}`}
-              className="max-h-[85vh] max-w-[90vw] object-contain"
+              fill
+              sizes="90vw"
+              quality={90}
+              className="object-contain"
             />
           </div>
           <button

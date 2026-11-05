@@ -9,9 +9,11 @@ const date = parseDate(invitation.date);
 
 export function Envelope({
   open,
+  shaking,
   onOpen,
 }: {
   open: boolean;
+  shaking: boolean;
   onOpen: () => void;
 }) {
   return (
@@ -27,7 +29,11 @@ export function Envelope({
     >
       <AmbientLeaves />
 
-      <div className="relative w-[310px] sm:w-[340px] md:w-[520px] lg:w-[600px]">
+      <div
+        className={`relative w-[310px] sm:w-[340px] md:w-[520px] lg:w-[600px] ${
+          shaking ? "cdn-shake-anim" : ""
+        }`}
+      >
         {/* Heart wax seal */}
         <div
           className="cdn-seal-anim absolute left-1/2 flex items-center justify-center rounded-full"
