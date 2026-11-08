@@ -176,9 +176,9 @@ function CoupleName({ fullName, birthOrder }: { shortName: string; fullName: str
       <span className="text-[43px] leading-[52px] md:text-[46px] md:leading-[60px]" style={{ fontFamily: "var(--cdn-garamond)", color: "var(--cdn-primary)" }}>
         {fullName}
       </span>
-      <span className="text-[10px] uppercase" style={{ color: "var(--cdn-muted)", fontFamily: "var(--cdn-cormorant)", letterSpacing: "0.14em" }}>
+      {/* <span className="text-[10px] uppercase" style={{ color: "var(--cdn-muted)", fontFamily: "var(--cdn-cormorant)", letterSpacing: "0.14em" }}>
         {birthOrder}
-      </span>
+      </span> */}
     </div>
   );
 }

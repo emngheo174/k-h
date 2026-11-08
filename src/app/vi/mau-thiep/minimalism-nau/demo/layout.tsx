@@ -55,11 +55,11 @@ const baskerville = Libre_Baskerville({
 export const metadata: Metadata = {
   title: "Trung Kiên & Hồng Hạnh | Thiệp cưới",
   description:
-    "Mẫu thiệp cưới Minimalism tối giản với nền kem trắng và sắc nâu trầm ấm áp, khung ảnh polaroid và hoa khô thanh lịch. Xem demo thiệp cưới online miễn phí.",
+    "Mẫu thiệp cưới Minimalism tối giản với nền kem trắng và sắc nâu trầm ấm áp, khung ảnh polaroid và hoa khô thanh lịch. Xem demo thiệp cưới online.",
   openGraph: {
     title: "Trung Kiên & Hồng Hạnh | Thiệp cưới",
     description:
-      "Mẫu thiệp cưới Minimalism tối giản với nền kem trắng và sắc nâu trầm ấm áp, khung ảnh polaroid và hoa khô thanh lịch. Xem demo thiệp cưới online miễn phí.",
+      "Mẫu thiệp cưới Minimalism tối giản với nền kem trắng và sắc nâu trầm ấm áp, khung ảnh polaroid và hoa khô thanh lịch. Xem demo thiệp cưới online.",
     siteName: "Chung Đôi",
     locale: "vi_VN",
     type: "website",
