@@ -224,7 +224,7 @@ export interface CoupleView {
 export const GROOM_MAP_QUERY = "20°40'24.0\"N 106°03'20.5\"E";
 // Bride's venue (nhà gái) — replace with the bride home's exact coordinates.
 // Placeholder falls back to the address string until real coordinates are set.
-export const BRIDE_MAP_QUERY = "22°05'25.3\"N 105°20'06.1\"E";
+export const BRIDE_MAP_QUERY = "Phòng Khám Đa Khoa Khu Vực Kim Bình";
 
 const groomPerson: Person = {
   shortName: invitation.groomShortName,
