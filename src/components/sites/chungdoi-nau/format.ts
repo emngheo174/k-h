@@ -54,14 +54,14 @@ export function vietQrUrl(bin: string, account: string, name: string): string {
   )}`;
 }
 
-export function mapsEmbedUrl(address: string): string {
-  // return `https://maps.google.com/maps?q=${encodeURIComponent(address)}&z=16&output=embed`;
-  return `https://maps.google.com/maps?q=20°40'24.0"N 106°03'20.5"E&z=16&output=embed`;
+/** Embeddable Google Maps iframe URL for a coordinate pin or address query. */
+export function mapsEmbedUrl(query: string): string {
+  return `https://maps.google.com/maps?q=${encodeURIComponent(query)}&z=16&output=embed`;
 }
 
-export function mapsLinkUrl(address: string): string {
-  // return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
-  return `https://www.google.com/maps/search/?api=1&query=20°40'24.0"N 106°03'20.5"E}`;
+/** "Open in Google Maps" link for a coordinate pin or address query. */
+export function mapsLinkUrl(query: string): string {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 }
 
 /** Days in a month (1-indexed month). */

@@ -176,6 +176,87 @@ export const t = {
   brand: "Chung Đôi",
 };
 
+// --------------------------------------------------------------- Sides ---
+// The invitation is hosted by one family at a time. The groom's card ("nhà
+// trai", /chu-re — the default) lists the groom first and shows the groom's
+// home as the venue; the bride's card ("nhà gái", /co-dau) lists the bride
+// first and shows the bride's home. Everything else is shared.
+
+export type Side = "groom" | "bride";
+
+export interface Person {
+  shortName: string;
+  fullName: string;
+  father: string;
+  mother: string;
+  address: string;
+  /** Precise venue pin for this family's home (its own location). */
+  mapQuery: string;
+  birthOrder: string;
+  sideLabel: string; // NHÀ TRAI / NHÀ GÁI
+  roleLabel: string; // Chú Rể / Cô Dâu
+  giftFor: GiftMethod["for"];
+}
+
+export interface CoupleView {
+  side: Side;
+  /** The hosting family, shown first on the card. */
+  first: Person;
+  /** The other family. */
+  second: Person;
+  /** Venue address for the hosting family (map + "add to calendar"). */
+  hostAddress: string;
+  /** Precise pin for the hosting family's venue map embed. */
+  mapQuery: string;
+}
+
+// Each family hosts at its own home, so each side has its own precise map pin.
+// Prefer exact coordinates (lat/lng) over a name search — a commune name alone
+// drops the pin on the whole area, not the house.
+// Groom's venue (nhà trai) — fixed pin carried over from the source template.
+export const GROOM_MAP_QUERY = "20°40'24.0\"N 106°03'20.5\"E";
+// Bride's venue (nhà gái) — replace with the bride home's exact coordinates.
+// Placeholder falls back to the address string until real coordinates are set.
+export const BRIDE_MAP_QUERY = "22°05'25.3\"N 105°20'06.1\"E";
+
+const groomPerson: Person = {
+  shortName: invitation.groomShortName,
+  fullName: invitation.groomFullName,
+  father: invitation.groomFather,
+  mother: invitation.groomMother,
+  address: invitation.groomAddress,
+  mapQuery: GROOM_MAP_QUERY,
+  birthOrder: t.groomBirthOrder,
+  sideLabel: t.groomSide,
+  roleLabel: t.groomLabel,
+  giftFor: "groom",
+};
+
+const bridePerson: Person = {
+  shortName: invitation.brideShortName,
+  fullName: invitation.brideFullName,
+  father: invitation.brideFather,
+  mother: invitation.brideMother,
+  address: invitation.brideAddress,
+  mapQuery: BRIDE_MAP_QUERY,
+  birthOrder: t.brideBirthOrder,
+  sideLabel: t.brideSide,
+  roleLabel: t.brideLabel,
+  giftFor: "bride",
+};
+
+export function getCoupleView(side: Side): CoupleView {
+  const [first, second] =
+    side === "bride" ? [bridePerson, groomPerson] : [groomPerson, bridePerson];
+  return {
+    side: side === "bride" ? "bride" : "groom",
+    first,
+    second,
+    hostAddress: first.address,
+    mapQuery: first.mapQuery,
+  };
+}
+
 export const WEEKDAYS_VI = [
   "Chủ Nhật",
   "Thứ Hai",

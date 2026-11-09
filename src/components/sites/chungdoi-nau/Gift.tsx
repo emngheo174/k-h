@@ -4,7 +4,7 @@ import { useState } from "react";
 import { invitation, t } from "./data";
 import { vietQrUrl } from "./format";
 import { ASSETS, BgDeco } from "./shared";
-import type { GiftMethod } from "./data";
+import type { GiftMethod, Side } from "./data";
 
 function GiftCard({ method, side }: { method: GiftMethod; side: string }) {
   const [open, setOpen] = useState(false);
@@ -64,9 +64,21 @@ function GiftCard({ method, side }: { method: GiftMethod; side: string }) {
   );
 }
 
-export function Gift() {
+export function Gift({ side = "groom" }: { side?: Side }) {
   const groom = invitation.giftMethods.find((m) => m.for === "groom");
   const bride = invitation.giftMethods.find((m) => m.for === "bride");
+  // Host family's gift card is shown first, matching the name order on the card.
+  const cards = (
+    side === "bride"
+      ? [
+          { method: bride, label: t.brideLabel },
+          { method: groom, label: t.groomLabel },
+        ]
+      : [
+          { method: groom, label: t.groomLabel },
+          { method: bride, label: t.brideLabel },
+        ]
+  ).filter((c): c is { method: GiftMethod; label: string } => Boolean(c.method));
 
   return (
     <div className="relative z-10 overflow-x-clip">
@@ -80,8 +92,9 @@ export function Gift() {
           {t.giftThankYou}
         </p>
         <div className="mt-8 flex w-full flex-col items-center gap-8 sm:flex-row sm:justify-center sm:gap-6">
-          {groom && <GiftCard method={groom} side={t.groomLabel} />}
-          {bride && <GiftCard method={bride} side={t.brideLabel} />}
+          {cards.map((c) => (
+            <GiftCard key={c.method.id} method={c.method} side={c.label} />
+          ))}
         </div>
       </div>
     </div>

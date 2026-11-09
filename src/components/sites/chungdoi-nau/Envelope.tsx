@@ -1,6 +1,6 @@
 "use client";
 
-import { invitation, t } from "./data";
+import { invitation, t, type CoupleView } from "./data";
 import { parseDate } from "./format";
 import { AmbientLeaves } from "./AmbientLeaves";
 import { ASSETS, HeartGlyph } from "./shared";
@@ -11,10 +11,12 @@ export function Envelope({
   open,
   shaking,
   onOpen,
+  view,
 }: {
   open: boolean;
   shaking: boolean;
   onOpen: () => void;
+  view: CoupleView;
 }) {
   return (
     <div
@@ -93,7 +95,7 @@ export function Envelope({
               style={{ color: "var(--cdn-primary)", fontFamily: "var(--cdn-garamond)" }}
             >
               <span className="block w-full text-center">
-                {invitation.groomShortName}
+                {view.first.shortName}
               </span>
               <span
                 className="block w-full text-center text-lg leading-none sm:text-xl"
@@ -102,7 +104,7 @@ export function Envelope({
                 &amp;
               </span>
               <span className="block w-full text-center">
-                {invitation.brideShortName}
+                {view.second.shortName}
               </span>
             </h1>
 

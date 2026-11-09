@@ -1,4 +1,4 @@
-import { invitation, t } from "./data";
+import { invitation, t, type CoupleView } from "./data";
 import {
   parseDate,
   googleCalendarUrl,
@@ -15,7 +15,7 @@ const prettyDate = `${date.day}.${date.month}.${date.year}`;
 
 /* ------------------------------------------------------------- Hero --- */
 
-export function Hero() {
+export function Hero({ view }: { view: CoupleView }) {
   return (
     <header className="relative z-10 flex flex-col items-center px-4 pb-20 pt-12 text-center md:pb-32">
       <BgDeco
@@ -44,7 +44,7 @@ export function Hero() {
           className="text-[clamp(30px,8.4vw,37px)] italic md:text-[46px]"
           style={{ fontFamily: "var(--cdn-serif)", color: "var(--cdn-eyebrow)" }}
         >
-          {invitation.groomShortName}
+          {view.first.shortName}
         </span>
         <span
           className="text-[42px] leading-none md:text-[54px]"
@@ -56,7 +56,7 @@ export function Hero() {
           className="text-[clamp(30px,8.4vw,37px)] italic md:text-[46px]"
           style={{ fontFamily: "var(--cdn-serif)", color: "var(--cdn-eyebrow)" }}
         >
-          {invitation.brideShortName}
+          {view.second.shortName}
         </span>
       </div>
 
@@ -65,7 +65,7 @@ export function Hero() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={invitation.heroPhoto}
-            alt={`${invitation.groomShortName} & ${invitation.brideShortName}`}
+            alt={`${view.first.shortName} & ${view.second.shortName}`}
             className="h-full w-full"
           />
         </div>
@@ -120,7 +120,7 @@ function FamilySide({
 
 /* ------------------------------------------------------- Ceremony --- */
 
-export function CeremonyCard() {
+export function CeremonyCard({ view }: { view: CoupleView }) {
   return (
     <section className="relative z-10 mx-auto w-[88%] max-w-[420px] md:max-w-[560px]">
       <FloatDeco src={ASSETS.flower2} className="bottom-[-6%] right-[-17%] z-20 w-[32%]" inner="-scale-x-100" dur={5.5} delay={0.6} />
@@ -132,11 +132,11 @@ export function CeremonyCard() {
 
           <div className="flex w-full items-stretch justify-center gap-3.5" style={{ fontFamily: "var(--cdn-baskerville)" }}>
             <div className="flex-1">
-              <FamilySide label={t.groomSide} father={invitation.groomFather} mother={invitation.groomMother} address={invitation.groomAddress} />
+              <FamilySide label={view.first.sideLabel} father={view.first.father} mother={view.first.mother} address={view.first.address} />
             </div>
             <div className="w-px shrink-0 self-center" style={{ height: "50px", backgroundColor: "rgba(124,106,96,0.33)" }} />
             <div className="flex-1">
-              <FamilySide label={t.brideSide} father={invitation.brideFather} mother={invitation.brideMother} address={invitation.brideAddress} />
+              <FamilySide label={view.second.sideLabel} father={view.second.father} mother={view.second.mother} address={view.second.address} />
             </div>
           </div>
 
@@ -145,11 +145,11 @@ export function CeremonyCard() {
           </p>
 
           <div className="flex flex-col items-center gap-4">
-            <CoupleName shortName={invitation.groomShortName} fullName={invitation.groomFullName} birthOrder={t.groomBirthOrder} />
+            <CoupleName shortName={view.first.shortName} fullName={view.first.fullName} birthOrder={view.first.birthOrder} />
             <div className="text-[35px]" style={{ color: "var(--cdn-primary)", fontFamily: "var(--cdn-msmadi)" }}>
               &
             </div>
-            <CoupleName shortName={invitation.brideShortName} fullName={invitation.brideFullName} birthOrder={t.brideBirthOrder} />
+            <CoupleName shortName={view.second.shortName} fullName={view.second.fullName} birthOrder={view.second.birthOrder} />
           </div>
 
           <div className="flex flex-col items-center gap-2">
@@ -185,12 +185,12 @@ function CoupleName({ fullName, birthOrder }: { shortName: string; fullName: str
 
 /* ------------------------------------------------------- Reception --- */
 
-export function PartyCard() {
+export function PartyCard({ view }: { view: CoupleView }) {
   const calUrl = googleCalendarUrl(
-    `Lễ cưới ${invitation.groomShortName} & ${invitation.brideShortName}`,
+    `Lễ cưới ${view.first.shortName} & ${view.second.shortName}`,
     invitation.date,
     invitation.banquetTime,
-    invitation.address,
+    view.hostAddress,
   );
   return (
     <section className="relative z-10 mx-auto mb-4 w-[88%] max-w-[420px] md:max-w-[560px]">
@@ -243,25 +243,25 @@ export function PartyCard() {
 
 /* ----------------------------------------------------------- Venue --- */
 
-export function Venue() {
+export function Venue({ view }: { view: CoupleView }) {
   return (
     <div className="relative z-10 overflow-x-clip">
       <BgDeco src={ASSETS.houseBg} className="left-1/2 top-[-10%] w-[135%] -translate-x-1/2 opacity-[0.08] mix-blend-multiply" />
       <div className="relative z-10 flex w-full flex-col items-center px-6 pb-8 pt-8 text-center">
         <p className="mx-auto mt-2 max-w-[280px] text-[12px] leading-relaxed md:max-w-[440px] md:text-[14px]" style={{ color: "var(--cdn-muted)", fontFamily: "var(--cdn-baskerville)" }}>
-          {invitation.address}
+          {view.hostAddress}
         </p>
         <div className="mt-3 h-[268px] w-full max-w-[338px] overflow-hidden rounded-[15px] md:h-[380px] md:max-w-[560px]" style={{ border: "1px solid var(--cdn-primary)" }}>
           <iframe
             title="Bản đồ địa điểm tiệc cưới"
-            src={mapsEmbedUrl(invitation.address)}
+            src={mapsEmbedUrl(view.mapQuery)}
             className="h-full w-full"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />
         </div>
         <a
-          href={mapsLinkUrl(invitation.address)}
+          href={mapsLinkUrl(view.mapQuery)}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-4 inline-block text-xs uppercase tracking-[0.2em] underline underline-offset-4"

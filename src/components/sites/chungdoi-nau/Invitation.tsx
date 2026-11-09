@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { getCoupleView, type Side } from "./data";
 import { Envelope } from "./Envelope";
 import { MusicPlayer } from "./MusicPlayer";
 import { Gallery } from "./Gallery";
@@ -16,7 +17,8 @@ import {
   Footer,
 } from "./sections";
 
-export function Invitation() {
+export function Invitation({ side = "groom" }: { side?: Side }) {
+  const view = getCoupleView(side);
   const [open, setOpen] = useState(false);
   const [shaking, setShaking] = useState(false);
 
@@ -41,19 +43,19 @@ export function Invitation() {
         {/* full-card paper texture */}
         <div aria-hidden className="cdn-paper-overlay pointer-events-none absolute inset-0 z-0" />
 
-        <Hero />
-        <CeremonyCard />
+        <Hero view={view} />
+        <CeremonyCard view={view} />
         <Gallery />
-        <PartyCard />
-        <Venue />
+        <PartyCard view={view} />
+        <Venue view={view} />
         {/* <Dresscode /> */}
         {/* <Timeline /> */}
         <Guestbook />
-        <Gift />
+        <Gift side={side} />
         <Footer />
       </main>
 
-      <Envelope open={open} shaking={shaking} onOpen={handleOpen} />
+      <Envelope open={open} shaking={shaking} onOpen={handleOpen} view={view} />
       <MusicPlayer playing={open} />
     </div>
   );

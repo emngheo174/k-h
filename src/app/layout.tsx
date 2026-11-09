@@ -12,9 +12,22 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
 export const metadata: Metadata = {
-  title: "Website Clone",
-  description: "Pixel-perfect website clone",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Thiệp cưới online | Chung Đôi",
+    template: "%s",
+  },
+  description:
+    "Thiệp mời cưới online — trân trọng kính mời bạn đến chung vui trong ngày trọng đại của chúng mình.",
+  applicationName: "Chung Đôi",
+  openGraph: {
+    siteName: "Chung Đôi",
+    locale: "vi_VN",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -24,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="vi"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>

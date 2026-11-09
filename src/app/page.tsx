@@ -1,9 +1,9 @@
+import { InvitationShell } from "@/components/sites/chungdoi-nau/InvitationShell";
+import { createMetadata } from "@/components/sites/chungdoi-nau/metadata";
+
+// Default route shows the groom's card ("nhà trai"); /co-dau is the bride's.
+export const metadata = createMetadata("groom");
+
 export default function Home() {
-  return (
-    <main className="flex min-h-screen items-center justify-center">
-      <p className="text-muted-foreground">
-        Clone target not yet built. Run <code className="font-mono text-foreground">/clone-website</code> to start.
-      </p>
-    </main>
-  );
+  return <InvitationShell side="groom" />;
 }
