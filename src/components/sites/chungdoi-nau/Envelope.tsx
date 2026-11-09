@@ -1,11 +1,9 @@
 "use client";
 
-import { invitation, t, type CoupleView } from "./data";
+import { t, type CoupleView } from "./data";
 import { parseDate } from "./format";
 import { AmbientLeaves } from "./AmbientLeaves";
 import { ASSETS, HeartGlyph } from "./shared";
-
-const date = parseDate(invitation.date);
 
 export function Envelope({
   open,
@@ -18,6 +16,8 @@ export function Envelope({
   onOpen: () => void;
   view: CoupleView;
 }) {
+  const date = parseDate(view.date);
+
   return (
     <div
       aria-hidden={open}

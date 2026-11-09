@@ -10,9 +10,6 @@ import { Countdown } from "./Countdown";
 import { MiniCalendar } from "./MiniCalendar";
 import { Rsvp } from "./Rsvp";
 
-const date = parseDate(invitation.date);
-const prettyDate = `${date.day}.${date.month}.${date.year}`;
-
 /* ------------------------------------------------------------- Hero --- */
 
 export function Hero({ view }: { view: CoupleView }) {
@@ -121,6 +118,9 @@ function FamilySide({
 /* ------------------------------------------------------- Ceremony --- */
 
 export function CeremonyCard({ view }: { view: CoupleView }) {
+  const date = parseDate(view.date);
+  const prettyDate = `${date.day}.${date.month}.${date.year}`;
+
   return (
     <section className="relative z-10 mx-auto w-[88%] max-w-[420px] md:max-w-[560px]">
       <FloatDeco src={ASSETS.flower2} className="bottom-[-6%] right-[-17%] z-20 w-[32%]" inner="-scale-x-100" dur={5.5} delay={0.6} />
@@ -161,7 +161,7 @@ export function CeremonyCard({ view }: { view: CoupleView }) {
               <span className="text-[24px] leading-none" style={{ color: "rgba(124,106,96,0.4)" }}>
                 |
               </span>
-              <span style={{ color: "var(--cdn-muted)" }}>{invitation.ceremonyTime}</span>
+              <span style={{ color: "var(--cdn-muted)" }}>{view.banquetTime}</span>
             </div>
           </div>
         </div>
@@ -186,10 +186,12 @@ function CoupleName({ fullName, birthOrder }: { shortName: string; fullName: str
 /* ------------------------------------------------------- Reception --- */
 
 export function PartyCard({ view }: { view: CoupleView }) {
+  const date = parseDate(view.date);
+  const prettyDate = `${date.day}.${date.month}.${date.year}`;
   const calUrl = googleCalendarUrl(
     `Lễ cưới ${view.first.shortName} & ${view.second.shortName}`,
-    invitation.date,
-    invitation.banquetTime,
+    view.date,
+    view.banquetTime,
     view.hostAddress,
   );
   return (
@@ -207,7 +209,7 @@ export function PartyCard({ view }: { view: CoupleView }) {
                 {t.atTime}
               </span>
               <span className="mt-1 text-2xl" style={{ color: "var(--cdn-primary)" }}>
-                {invitation.banquetTime}
+                {view.banquetTime}
               </span>
             </div>
             <div className="h-6 w-[2px]" style={{ backgroundColor: "var(--cdn-primary)" }} />
@@ -221,8 +223,8 @@ export function PartyCard({ view }: { view: CoupleView }) {
             </div>
           </div>
 
-          <MiniCalendar />
-          <Countdown />
+          <MiniCalendar view={view} />
+          <Countdown view={view} />
 
           <a
             href={calUrl}

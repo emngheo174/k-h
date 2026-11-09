@@ -34,8 +34,10 @@ export interface InvitationData {
   brideFather: string;
   brideMother: string;
   brideAddress: string;
-  date: string; // ISO YYYY-MM-DD
-  banquetTime: string; // HH:mm
+  groomDate: string; // ISO YYYY-MM-DD
+  brideDate: string; // ISO YYYY-MM-DD
+  groomBanquetTime: string; // HH:mm
+  brideBanquetTime: string; // HH:mm
   guestReceptionTime: string; // HH:mm
   ceremonyTime: string; // HH:mm
   ceremonyHeader: string;
@@ -59,10 +61,12 @@ export const invitation: InvitationData = {
   brideFather: "Đào Văn Quý",
   brideMother: "Hoàng Thị Chiên",
   brideAddress: "Xã Kim Bình, Tuyên Quang",
-  date: "2026-11-29",
-  banquetTime: "18:00",
+  groomDate: "2026-11-29",
+  brideDate: "2026-11-28",
+  groomBanquetTime: "10:30",
+  brideBanquetTime: "16:00",
   guestReceptionTime: "10:30",
-  ceremonyTime: "09:00",
+  ceremonyTime: "10:30",
   ceremonyHeader: "LỄ THÀNH HÔN ĐƯỢC CỬ HÀNH TẠI\nTƯ GIA",
   address:
     "Số 11 đường Đinh Gia Quế, phường Sơn Nam, Hưng Yên",
@@ -89,11 +93,11 @@ export const invitation: InvitationData = {
     {
       id: "g1",
       for: "groom",
-      bankBin: "970436",
-      bankCode: "VCB",
-      bankName: "Vietcombank",
+      bankBin: "970416",
+      bankCode: "ACB",
+      bankName: "ACB",
       accountName: "MAI TRUNG KIEN",
-      accountNumber: "1023456789",
+      accountNumber: "13037281",
     },
     {
       id: "g2",
@@ -102,7 +106,7 @@ export const invitation: InvitationData = {
       bankCode: "TCB",
       bankName: "Techcombank",
       accountName: "DAO HONG HANH",
-      accountNumber: "9988776655",
+      accountNumber: "1907 0054 3710 11",
     },
   ],
   music: {
@@ -200,6 +204,9 @@ export interface Person {
 
 export interface CoupleView {
   side: Side;
+  /** The hosting family's wedding date and banquet time. */
+  date: string;
+  banquetTime: string;
   /** The hosting family, shown first on the card. */
   first: Person;
   /** The other family. */
@@ -250,6 +257,11 @@ export function getCoupleView(side: Side): CoupleView {
     side === "bride" ? [bridePerson, groomPerson] : [groomPerson, bridePerson];
   return {
     side: side === "bride" ? "bride" : "groom",
+    date: side === "bride" ? invitation.brideDate : invitation.groomDate,
+    banquetTime:
+      side === "bride"
+        ? invitation.brideBanquetTime
+        : invitation.groomBanquetTime,
     first,
     second,
     hostAddress: first.address,

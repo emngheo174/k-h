@@ -6,12 +6,11 @@ import { parseDate } from "./format";
 // absolute links; falls back to localhost during development.
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
-const date = parseDate(invitation.date);
-const prettyDate = `${date.weekday}, ${date.day}.${date.month}.${date.year}`;
-
 /** Per-side metadata: names run host-first and the venue matches the host. */
 export function createMetadata(side: Side): Metadata {
   const view = getCoupleView(side);
+  const date = parseDate(view.date);
+  const prettyDate = `${date.weekday}, ${date.day}.${date.month}.${date.year}`;
   const names = `${view.first.shortName} & ${view.second.shortName}`;
   const title = `${names} | Thiệp cưới`;
   const venueLabel = side === "bride" ? "nhà gái" : "nhà trai";

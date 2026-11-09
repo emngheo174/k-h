@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { invitation, t } from "./data";
+import { t, type CoupleView } from "./data";
 
 function diff(target: number) {
   let ms = Math.max(0, target - Date.now());
@@ -16,9 +16,9 @@ function diff(target: number) {
 }
 
 /** Countdown row shown inside the reception panel ("Cùng đếm ngược"). */
-export function Countdown() {
+export function Countdown({ view }: { view: CoupleView }) {
   const target = new Date(
-    `${invitation.date}T${invitation.banquetTime}:00+07:00`,
+    `${view.date}T${view.banquetTime}:00+07:00`,
   ).getTime();
   const [time, setTime] = useState<ReturnType<typeof diff> | null>(null);
 

@@ -1,10 +1,9 @@
-import { invitation, CAL_WEEKDAYS_VI } from "./data";
+import { CAL_WEEKDAYS_VI, type CoupleView } from "./data";
 import { parseDate, daysInMonth, firstWeekdayOfMonth } from "./format";
 
-const date = parseDate(invitation.date);
-
 /** Mini month calendar inside the reception panel (bg calendarBg, Nautigal title). */
-export function MiniCalendar() {
+export function MiniCalendar({ view }: { view: CoupleView }) {
+  const date = parseDate(view.date);
   const year = date.dayNum ? parseInt(date.year, 10) : 2026;
   const month = date.monthNum;
   const total = daysInMonth(year, month);
