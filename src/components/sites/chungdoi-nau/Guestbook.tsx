@@ -71,24 +71,28 @@ export function Guestbook({ side }: { side: Side }) {
         className="left-[-14%] top-[-8%] -z-0 w-[44%] rotate-[38deg] opacity-[0.1]"
       />
       <div className="relative z-10 px-6 pb-10 pt-10 md:pt-12">
+        {/* A real cream "paper" card: fixed, even padding, content always
+            contained. No stretched background image (that caused overflow and
+            a distorted leaf when the wish list grew). */}
         <div
-          className="relative mx-auto max-w-[540px]"
-          style={{ color: "var(--cdn-primary)", fontFamily: "var(--cdn-serif)" }}
+          className="relative mx-auto max-w-[480px] overflow-hidden rounded-[18px] border shadow-[0_12px_32px_-14px_rgba(124,106,96,0.4)]"
+          style={{
+            color: "var(--cdn-primary)",
+            fontFamily: "var(--cdn-serif)",
+            backgroundColor: "var(--cdn-card-fill)",
+            borderColor: "rgba(124,106,96,0.2)",
+          }}
         >
-          {/* Paper-note backdrop, stretched to cover the whole card so the
-              form + wishes never spill off the bottom edge of the paper. */}
+          {/* Botanical accent — fixed size, faint, decorative only. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={ASSETS.paperNote}
+            src={ASSETS.leafBg}
             alt=""
             aria-hidden
-            className="pointer-events-none absolute inset-0 h-full w-full select-none object-fill opacity-95 drop-shadow-[4px_4px_4px_rgba(0,0,0,0.25)]"
+            className="pointer-events-none absolute -bottom-2 -right-4 w-[36%] max-w-[150px] -rotate-[18deg] select-none opacity-[0.14]"
           />
 
-          {/* Padding is a % so it tracks the paper image's built-in margins at
-              every width. Left is larger: the leaf sprig pokes onto the lower
-              ~19% of the card's left side, so content must clear it. */}
-          <div className="relative z-10 pb-12 pl-[19%] pr-[19%] pt-12 md:pb-14 md:pt-14">
+          <div className="relative z-10 p-6 md:p-8">
             <h2 className="cdn-title text-center text-[20px] font-bold md:text-[24px]">
               {t.guestbook}
             </h2>
