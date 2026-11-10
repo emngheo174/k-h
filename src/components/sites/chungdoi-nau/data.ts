@@ -80,6 +80,9 @@ export const invitation: InvitationData = {
     { src: "/sites/chungdoi-nau/gallery/_ATU5668.jpg", position: { x: 0.5, y: 0.5 } },
     { src: "/sites/chungdoi-nau/gallery/_ATU5588.jpg", position: { x: 0.5, y: 0.5 } },
     { src: "/sites/chungdoi-nau/gallery/_ATU5069.jpg", position: { x: 0.5, y: 0.5 } },
+    { src: "/sites/chungdoi-nau/gallery/TUA02035.jpg", position: { x: 0.5, y: 0.5 } },
+    { src: "/sites/chungdoi-nau/gallery/_ATU5865.jpg", position: { x: 0.5, y: 0.5 } },
+    { src: "/sites/chungdoi-nau/gallery/_ATU5624.jpg", position: { x: 0.5, y: 0.5 } },
   ],
   timelineEvents: [
     { id: "t1", time: "17:00", label: "Đón khách" },
