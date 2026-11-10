@@ -46,7 +46,7 @@ export function createMetadata(side: Side): Metadata {
       images: [
         {
           // url: invitation.heroPhoto,
-          url: "/sites/chungdoi-nau/og.jpg",
+          url: "/sites/chungdoi-nau/og-v2.jpg",
           width: 1200,
           height: 630,
           alt: `${names} — Thiệp cưới`,
@@ -58,7 +58,7 @@ export function createMetadata(side: Side): Metadata {
       title,
       description,
       // images: [invitation.heroPhoto],
-      images: ["/sites/chungdoi-nau/og.jpg"],
+      images: ["/sites/chungdoi-nau/og-v2.jpg"],
     },
     robots: {
       index: true,
