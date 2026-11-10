@@ -45,7 +45,10 @@ export function createMetadata(side: Side): Metadata {
       url: side === "bride" ? "/co-dau" : "/chu-re",
       images: [
         {
-          url: invitation.heroPhoto,
+          // url: invitation.heroPhoto,
+          url: "/sites/chungdoi-nau/og.jpg",
+          width: 1200,
+          height: 630,
           alt: `${names} — Thiệp cưới`,
         },
       ],
@@ -54,7 +57,8 @@ export function createMetadata(side: Side): Metadata {
       card: "summary_large_image",
       title,
       description,
-      images: [invitation.heroPhoto],
+      // images: [invitation.heroPhoto],
+      images: ["/sites/chungdoi-nau/og.jpg"],
     },
     robots: {
       index: true,
