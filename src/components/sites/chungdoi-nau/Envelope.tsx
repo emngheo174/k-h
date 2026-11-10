@@ -91,8 +91,8 @@ export function Envelope({
 
           <div className="relative z-10 px-6 pb-14 pt-28 text-center md:pb-8 md:pt-24">
             <h1
-              className="mb-2 flex flex-col items-center text-3xl leading-tight sm:text-4xl"
-              style={{ color: "var(--cdn-primary)", fontFamily: "var(--cdn-garamond)" }}
+              className="mb-2 flex flex-col items-center text-4xl leading-snug sm:text-5xl"
+              style={{ color: "var(--cdn-primary)", fontFamily: "var(--cdn-name)" }}
             >
               <span className="block w-full text-center">
                 {view.first.shortName}

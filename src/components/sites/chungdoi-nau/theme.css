@@ -17,10 +17,15 @@
   --cdn-env-bot: #dcc6b2;
   --cdn-env-card: rgba(255, 250, 245, 0.96);
 
-  /* Font stacks (match source: x/f/u/y + couple fonts) */
-  --cdn-serif: "Times New Roman", Times, ChungDoiIndic, serif; /* x */
-  --cdn-baskerville: "Baskerville", var(--font-cdn-baskerville), "Times New Roman",
-    ChungDoiIndic, serif; /* f */
+  /* Font stacks (couple fonts + an elegant, Vietnamese-complete base).
+     Body/base text uses Lora (warm, readable, full Vietnamese support)
+     instead of Times New Roman. */
+  --cdn-serif: var(--font-cdn-lora), "Lora", "Times New Roman", ChungDoiIndic,
+    serif; /* x */
+  /* Was Libre Baskerville (no Vietnamese glyphs → diacritics fell back to
+     Times New Roman). Now EB Garamond for full, consistent Vietnamese. */
+  --cdn-baskerville: var(--font-cdn-garamond), "EB Garamond", "Times New Roman",
+    serif; /* f */
   --cdn-cormorant: var(--font-cdn-cormorant), "Cormorant Garamond",
     "Times New Roman", serif; /* u */
   --cdn-nautigal: var(--font-cdn-nautigal), "The Nautigal", cursive; /* y */
@@ -28,6 +33,10 @@
     serif;
   --cdn-msmadi: var(--font-cdn-msmadi), "Ms Madi", cursive;
   --cdn-lora: var(--font-cdn-lora), "Lora", "Times New Roman", serif;
+  --cdn-playfair: var(--font-cdn-playfair), "Playfair Display", "EB Garamond",
+    serif;
+  /* Couple names — flowing script (Vietnamese-complete). */
+  --cdn-name: var(--font-cdn-dancing), "Dancing Script", cursive;
 
   color: var(--cdn-primary);
   font-family: var(--cdn-serif);
@@ -72,9 +81,9 @@
   cursor: pointer;
 }
 
-/* Section titles */
+/* Section titles — Playfair Display (high-contrast display serif, VN-complete). */
 .cdn-title {
-  font-family: var(--cdn-serif);
+  font-family: var(--cdn-playfair);
   color: var(--cdn-primary);
   font-weight: 700;
   font-size: 20px;

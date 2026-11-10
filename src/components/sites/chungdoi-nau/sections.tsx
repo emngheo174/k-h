@@ -38,8 +38,8 @@ export function Hero({ view }: { view: CoupleView }) {
 
       <div className="relative z-10 mt-3 flex items-center justify-center gap-2 md:mt-4 md:gap-3">
         <span
-          className="text-[clamp(30px,8.4vw,37px)] italic md:text-[46px]"
-          style={{ fontFamily: "var(--cdn-serif)", color: "var(--cdn-eyebrow)" }}
+          className="text-[clamp(34px,9.2vw,42px)] leading-snug md:text-[52px]"
+          style={{ fontFamily: "var(--cdn-name)", color: "var(--cdn-eyebrow)" }}
         >
           {view.first.shortName}
         </span>
@@ -50,8 +50,8 @@ export function Hero({ view }: { view: CoupleView }) {
           &
         </span>
         <span
-          className="text-[clamp(30px,8.4vw,37px)] italic md:text-[46px]"
-          style={{ fontFamily: "var(--cdn-serif)", color: "var(--cdn-eyebrow)" }}
+          className="text-[clamp(34px,9.2vw,42px)] leading-snug md:text-[52px]"
+          style={{ fontFamily: "var(--cdn-name)", color: "var(--cdn-eyebrow)" }}
         >
           {view.second.shortName}
         </span>
@@ -140,7 +140,7 @@ export function CeremonyCard({ view }: { view: CoupleView }) {
             </div>
           </div>
 
-          <p className="flex flex-col gap-1 whitespace-pre-line text-[16px] md:text-[20px]" style={{ fontFamily: "var(--cdn-baskerville)", color: "var(--cdn-primary)" }}>
+          <p className="flex flex-col gap-1 whitespace-pre-line px-7 text-[16px] md:px-0 md:text-[20px]" style={{ fontFamily: "var(--cdn-baskerville)", color: "var(--cdn-primary)" }}>
             {t.announcement}
           </p>
 
@@ -173,7 +173,7 @@ export function CeremonyCard({ view }: { view: CoupleView }) {
 function CoupleName({ fullName, birthOrder }: { shortName: string; fullName: string; birthOrder: string }) {
   return (
     <div className="flex flex-col items-center">
-      <span className="text-[43px] leading-[52px] md:text-[46px] md:leading-[60px]" style={{ fontFamily: "var(--cdn-garamond)", color: "var(--cdn-primary)" }}>
+      <span className="text-[40px] leading-[1.25] md:text-[48px]" style={{ fontFamily: "var(--cdn-name)", color: "var(--cdn-primary)" }}>
         {fullName}
       </span>
       {/* <span className="text-[10px] uppercase" style={{ color: "var(--cdn-muted)", fontFamily: "var(--cdn-cormorant)", letterSpacing: "0.14em" }}>

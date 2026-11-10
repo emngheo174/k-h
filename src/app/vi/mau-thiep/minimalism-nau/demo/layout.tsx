@@ -5,7 +5,8 @@ import {
   Lora,
   The_Nautigal,
   Ms_Madi,
-  Libre_Baskerville,
+  Playfair_Display,
+  Dancing_Script,
 } from "next/font/google";
 import "@/components/sites/chungdoi-nau/theme.css";
 
@@ -45,10 +46,17 @@ const msMadi = Ms_Madi({
   display: "swap",
 });
 
-const baskerville = Libre_Baskerville({
-  variable: "--font-cdn-baskerville",
-  subsets: ["latin"],
-  weight: ["400", "700"],
+const playfair = Playfair_Display({
+  variable: "--font-cdn-playfair",
+  subsets: ["latin", "latin-ext", "vietnamese"],
+  weight: ["600", "700"],
+  display: "swap",
+});
+
+const dancing = Dancing_Script({
+  variable: "--font-cdn-dancing",
+  subsets: ["latin", "latin-ext", "vietnamese"],
+  weight: ["500", "600", "700"],
   display: "swap",
 });
 
@@ -73,7 +81,7 @@ export default function DemoLayout({
 }) {
   return (
     <div
-      className={`cdn-root ${garamond.variable} ${cormorant.variable} ${lora.variable} ${nautigal.variable} ${msMadi.variable} ${baskerville.variable}`}
+      className={`cdn-root ${garamond.variable} ${cormorant.variable} ${lora.variable} ${nautigal.variable} ${msMadi.variable} ${playfair.variable} ${dancing.variable}`}
     >
       {children}
     </div>

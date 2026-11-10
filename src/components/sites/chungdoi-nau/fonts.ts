@@ -6,7 +6,8 @@ import {
   Lora,
   The_Nautigal,
   Ms_Madi,
-  Libre_Baskerville,
+  Playfair_Display,
+  Dancing_Script,
 } from "next/font/google";
 
 const garamond = EB_Garamond({
@@ -47,12 +48,21 @@ const msMadi = Ms_Madi({
   display: "swap",
 });
 
-const baskerville = Libre_Baskerville({
-  variable: "--font-cdn-baskerville",
-  subsets: ["latin"],
-  weight: ["400", "700"],
+// Section-title display face (high-contrast, elegant). Vietnamese-complete.
+const playfair = Playfair_Display({
+  variable: "--font-cdn-playfair",
+  subsets: ["latin", "latin-ext", "vietnamese"],
+  weight: ["600", "700"],
+  display: "swap",
+});
+
+// Couple names — a flowing script with full Vietnamese support.
+const dancing = Dancing_Script({
+  variable: "--font-cdn-dancing",
+  subsets: ["latin", "latin-ext", "vietnamese"],
+  weight: ["500", "600", "700"],
   display: "swap",
 });
 
 /** Combined CSS-variable classes; apply to the `.cdn-root` wrapper. */
-export const fontClassName = `${garamond.variable} ${cormorant.variable} ${lora.variable} ${nautigal.variable} ${msMadi.variable} ${baskerville.variable}`;
+export const fontClassName = `${garamond.variable} ${cormorant.variable} ${lora.variable} ${nautigal.variable} ${msMadi.variable} ${playfair.variable} ${dancing.variable}`;
