@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { t } from "./data";
+import { t, type Side } from "./data";
 
-/** RSVP: a primary button that reveals the confirmation form (template `o.V`). */
-export function Rsvp() {
+/** RSVP: a primary button that reveals the confirmation form (template `o.V`).
+ *  `side` (groom/bride, from the page URL) is stored with each response. */
+export function Rsvp({ side }: { side: Side }) {
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
   const [attend, setAttend] = useState<"yes" | "no" | null>(null);
@@ -12,15 +13,33 @@ export function Rsvp() {
   const [message, setMessage] = useState("");
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || attend === null) return;
+    if (!name || attend === null || sending) return;
     setSending(true);
-    setTimeout(() => {
-      setSending(false);
+    setError("");
+    try {
+      const res = await fetch("/api/rsvp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          side,
+          name: name.trim(),
+          attending: attend === "yes",
+          guests,
+          message: message.trim(),
+        }),
+      });
+      const d = await res.json();
+      if (!res.ok || !d.ok) throw new Error(d.error || "Không gửi được xác nhận.");
       setSent(true);
-    }, 700);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Không gửi được xác nhận.");
+    } finally {
+      setSending(false);
+    }
   };
 
   const inputStyle = {
@@ -122,6 +141,11 @@ export function Rsvp() {
           >
             {sending ? t.rsvpSendingText : t.rsvpSubmitText}
           </button>
+          {error && (
+            <p className="cdn-fade-in text-center text-xs" style={{ color: "#b4524a" }}>
+              {error}
+            </p>
+          )}
         </form>
       )}
 

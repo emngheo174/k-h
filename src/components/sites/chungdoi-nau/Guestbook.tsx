@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { t } from "./data";
+import { useEffect, useState } from "react";
+import { t, type Side } from "./data";
 import { ASSETS, BgDeco } from "./shared";
 
 interface Wish {
@@ -9,21 +9,53 @@ interface Wish {
   message: string;
 }
 
-/** Guestbook ("Sổ lưu bút") with a paper-note backdrop (template `c.tG`). */
-export function Guestbook() {
+/** Guestbook ("Sổ lưu bút") with a paper-note backdrop (template `c.tG`).
+ *  `side` (groom/bride, from the page URL) is stored with each wish. */
+export function Guestbook({ side }: { side: Side }) {
   const [wishes, setWishes] = useState<Wish[]>([]);
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
-  const [saved, setSaved] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "saved" | "error">("idle");
+  const [error, setError] = useState("");
 
-  const submit = (e: React.FormEvent) => {
+  // Load the public guestbook feed on mount.
+  useEffect(() => {
+    let active = true;
+    fetch("/api/wishes")
+      .then((r) => r.json())
+      .then((d) => {
+        if (active && d.ok) setWishes(d.wishes as Wish[]);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !message.trim()) return;
-    setWishes((w) => [{ name: name.trim(), message: message.trim() }, ...w]);
-    setName("");
-    setMessage("");
-    setSaved(true);
-    setTimeout(() => setSaved(false), 2500);
+    const n = name.trim();
+    const m = message.trim();
+    if (!n || !m || status === "sending") return;
+    setStatus("sending");
+    setError("");
+    try {
+      const res = await fetch("/api/wishes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ side, name: n, message: m }),
+      });
+      const d = await res.json();
+      if (!res.ok || !d.ok) throw new Error(d.error || "Không lưu được lời chúc.");
+      setWishes((w) => [{ name: d.wish.name, message: d.wish.message }, ...w]);
+      setName("");
+      setMessage("");
+      setStatus("saved");
+      setTimeout(() => setStatus("idle"), 2500);
+    } catch (err) {
+      setStatus("error");
+      setError(err instanceof Error ? err.message : "Không lưu được lời chúc.");
+    }
   };
 
   const inputStyle = {
@@ -78,14 +110,20 @@ export function Guestbook() {
               />
               <button
                 type="submit"
-                className="mt-3 w-full rounded-full px-5 py-2 text-sm tracking-wide transition-opacity hover:opacity-90"
+                disabled={status === "sending"}
+                className="mt-3 w-full rounded-full px-5 py-2 text-sm tracking-wide transition-opacity hover:opacity-90 disabled:opacity-50"
                 style={{ backgroundColor: "var(--cdn-primary)", color: "var(--cdn-light)" }}
               >
-                {t.submitWishText}
+                {status === "sending" ? "Đang gửi…" : t.submitWishText}
               </button>
-              {saved && (
+              {status === "saved" && (
                 <p className="cdn-fade-in mt-2 text-center text-xs" style={{ color: "var(--cdn-primary)" }}>
                   {t.wishSavedText}
+                </p>
+              )}
+              {status === "error" && (
+                <p className="cdn-fade-in mt-2 text-center text-xs" style={{ color: "#b4524a" }}>
+                  {error}
                 </p>
               )}
             </form>

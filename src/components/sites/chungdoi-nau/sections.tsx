@@ -1,4 +1,4 @@
-import { invitation, t, type CoupleView } from "./data";
+import { invitation, t, type CoupleView, type Side } from "./data";
 import {
   parseDate,
   googleCalendarUrl,
@@ -185,7 +185,7 @@ function CoupleName({ fullName, birthOrder }: { shortName: string; fullName: str
 
 /* ------------------------------------------------------- Reception --- */
 
-export function PartyCard({ view }: { view: CoupleView }) {
+export function PartyCard({ view, side }: { view: CoupleView; side: Side }) {
   const date = parseDate(view.date);
   const prettyDate = `${date.day}.${date.month}.${date.year}`;
   const calUrl = googleCalendarUrl(
@@ -236,7 +236,7 @@ export function PartyCard({ view }: { view: CoupleView }) {
             {t.addToCalendar}
           </a>
 
-          <Rsvp />
+          <Rsvp side={side} />
         </div>
       </Panel>
     </section>

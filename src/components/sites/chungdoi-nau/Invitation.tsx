@@ -46,11 +46,11 @@ export function Invitation({ side = "groom" }: { side?: Side }) {
         <Hero view={view} />
         <CeremonyCard view={view} />
         <Gallery />
-        <PartyCard view={view} />
+        <PartyCard view={view} side={side} />
         <Venue view={view} />
         {/* <Dresscode /> */}
         {/* <Timeline /> */}
-        <Guestbook />
+        <Guestbook side={side} />
         <Gift side={side} />
         <Footer />
       </main>
