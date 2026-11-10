@@ -88,7 +88,7 @@ export function Guestbook({ side }: { side: Side }) {
           {/* Padding is a % so it tracks the paper image's built-in margins at
               every width. Left is larger: the leaf sprig pokes onto the lower
               ~19% of the card's left side, so content must clear it. */}
-          <div className="relative z-10 pb-11 pl-[19%] pr-[19%] pt-10 md:pb-12 md:pt-12">
+          <div className="relative z-10 pb-12 pl-[19%] pr-[19%] pt-12 md:pb-14 md:pt-14">
             <h2 className="cdn-title text-center text-[20px] font-bold md:text-[24px]">
               {t.guestbook}
             </h2>
@@ -128,7 +128,7 @@ export function Guestbook({ side }: { side: Side }) {
               )}
             </form>
 
-            <div className="mt-6 space-y-3">
+            <div className="mt-6 max-h-[320px] space-y-3 overflow-y-auto pr-1 md:max-h-[420px]">
               {wishes.length === 0 ? (
                 <p className="text-center text-sm italic" style={{ color: "var(--cdn-muted)" }}>
                   {t.noWishesYet}

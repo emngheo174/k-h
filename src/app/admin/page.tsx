@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { isAdmin } from "@/lib/admin-auth";
 import { isDbConfigured, listRsvps, listWishes } from "@/lib/wedding-db";
-import { AdminLogin, LogoutButton } from "./AdminLogin";
+import { AdminLogin, DeleteButton, LogoutButton } from "./AdminLogin";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Quản trị", robots: { index: false, follow: false } };
@@ -80,12 +80,13 @@ export default async function AdminPage() {
                 <th className="px-3 py-2 font-medium">Tham dự</th>
                 <th className="px-3 py-2 font-medium">Khách</th>
                 <th className="px-3 py-2 font-medium">Lời nhắn</th>
+                <th className="px-3 py-2"></th>
               </tr>
             </thead>
             <tbody>
               {rsvps.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-3 py-6 text-center text-neutral-400">
+                  <td colSpan={7} className="px-3 py-6 text-center text-neutral-400">
                     Chưa có phản hồi nào.
                   </td>
                 </tr>
@@ -104,6 +105,9 @@ export default async function AdminPage() {
                     </td>
                     <td className="px-3 py-2 tabular-nums">{r.attending ? r.guests : "—"}</td>
                     <td className="px-3 py-2 text-neutral-600">{r.message || "—"}</td>
+                    <td className="px-3 py-2 text-right">
+                      <DeleteButton type="rsvp" id={r.id} />
+                    </td>
                   </tr>
                 ))
               )}
@@ -131,12 +135,13 @@ export default async function AdminPage() {
                 <th className="px-3 py-2 font-medium">Bên mời</th>
                 <th className="px-3 py-2 font-medium">Tên</th>
                 <th className="px-3 py-2 font-medium">Lời chúc</th>
+                <th className="px-3 py-2"></th>
               </tr>
             </thead>
             <tbody>
               {wishes.length === 0 ? (
                 <tr>
-                  <td colSpan={4} className="px-3 py-6 text-center text-neutral-400">
+                  <td colSpan={5} className="px-3 py-6 text-center text-neutral-400">
                     Chưa có lời chúc nào.
                   </td>
                 </tr>
@@ -147,6 +152,9 @@ export default async function AdminPage() {
                     <td className="whitespace-nowrap px-3 py-2">{SIDE_LABEL[w.side] ?? w.side}</td>
                     <td className="px-3 py-2 font-medium">{w.name}</td>
                     <td className="px-3 py-2 text-neutral-600">{w.message}</td>
+                    <td className="px-3 py-2 text-right">
+                      <DeleteButton type="wishes" id={w.id} />
+                    </td>
                   </tr>
                 ))
               )}

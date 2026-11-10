@@ -72,6 +72,17 @@ async function insert<T>(table: string, row: object, returnRow = false): Promise
   return rows[0] ?? null;
 }
 
+async function removeById(table: string, id: string): Promise<void> {
+  const res = await fetch(restUrl(table, `?id=eq.${encodeURIComponent(id)}`), {
+    method: "DELETE",
+    headers: headers({ Prefer: "return=minimal" }),
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    throw new Error(`Supabase delete "${table}" failed (${res.status}): ${await res.text()}`);
+  }
+}
+
 async function select<T>(table: string, query: string): Promise<T[]> {
   const res = await fetch(restUrl(table, query), {
     headers: headers(),
@@ -121,4 +132,14 @@ export function listRsvps(): Promise<RsvpRow[]> {
 /** Admin: every wish, newest first. */
 export function listWishes(): Promise<WishRow[]> {
   return select<WishRow>("wishes", "?select=*&order=created_at.desc");
+}
+
+// --------------------------------------------------------------- deletes ---
+
+export function deleteRsvp(id: string): Promise<void> {
+  return removeById("rsvps", id);
+}
+
+export function deleteWish(id: string): Promise<void> {
+  return removeById("wishes", id);
 }

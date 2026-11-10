@@ -63,6 +63,38 @@ export function AdminLogin({ configured }: { configured: boolean }) {
   );
 }
 
+export function DeleteButton({ type, id }: { type: "rsvp" | "wishes"; id: string }) {
+  const router = useRouter();
+  const [busy, setBusy] = useState(false);
+  return (
+    <button
+      type="button"
+      disabled={busy}
+      aria-label="Xoá"
+      onClick={async () => {
+        if (!confirm("Xoá mục này? Không thể hoàn tác.")) return;
+        setBusy(true);
+        try {
+          const res = await fetch("/api/admin/delete", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ type, id }),
+          });
+          const d = await res.json();
+          if (!res.ok || !d.ok) throw new Error(d.error || "Không xoá được.");
+          router.refresh();
+        } catch (err) {
+          setBusy(false);
+          alert(err instanceof Error ? err.message : "Không xoá được.");
+        }
+      }}
+      className="cursor-pointer rounded px-2 py-1 text-xs font-medium text-red-600 transition-colors hover:bg-red-50 disabled:opacity-50"
+    >
+      {busy ? "…" : "Xoá"}
+    </button>
+  );
+}
+
 export function LogoutButton() {
   const router = useRouter();
   return (
