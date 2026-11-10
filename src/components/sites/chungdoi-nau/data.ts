@@ -171,7 +171,7 @@ export const t = {
   rsvpCloseText: "Đóng",
   guestbook: "SỔ LƯU BÚT",
   submitWishText: "Gửi lời chúc",
-  noWishesYet: "Chưa có lời chúc nào. Hãy là người đầu tiên!",
+  noWishesYet: "Hãy dành lời chúc cho cô dâu & chú rể nhé!",
   guestNamePlaceholder: "Nhập tên*",
   guestWishPlaceholder: "Nhập lời chúc*",
   wishSavedText: "Cảm ơn bạn! Lời chúc đã được lưu.",

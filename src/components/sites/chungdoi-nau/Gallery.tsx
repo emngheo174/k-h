@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { createPortal } from "react-dom";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { invitation, t } from "./data";
 import { ASSETS, BgDeco } from "./shared";
@@ -252,9 +253,11 @@ export function Gallery() {
         </div>
       </div>
 
-      {open && (
+      {open &&
+        typeof document !== "undefined" &&
+        createPortal(
         <div
-          className="cdn-fade-in fixed inset-0 z-[60] flex items-center justify-center bg-black/80 p-4"
+          className="cdn-fade-in fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4"
           onClick={() => setOpen(false)}
         >
           <button
@@ -300,8 +303,9 @@ export function Gallery() {
           >
             ›
           </button>
-        </div>
-      )}
+        </div>,
+          document.body,
+        )}
     </div>
   );
 }

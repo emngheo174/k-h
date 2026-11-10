@@ -27,7 +27,7 @@ export function Guestbook() {
   };
 
   const inputStyle = {
-    borderColor: "var(--cdn-primary)",
+    borderColor: "rgba(124,106,96,0.3)",
     color: "var(--cdn-primary)",
     backgroundColor: "transparent",
   } as const;
@@ -38,75 +38,84 @@ export function Guestbook() {
         src={ASSETS.leafBg}
         className="left-[-14%] top-[-8%] -z-0 w-[44%] rotate-[38deg] opacity-[0.1]"
       />
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={ASSETS.paperNote}
-        alt=""
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 top-[70px] w-[100%] max-w-[650px] -translate-x-1/2 object-contain opacity-95 drop-shadow-[4px_4px_4px_rgba(0,0,0,0.25)] md:top-[85px]"
-      />
-
-      <div
-        className="relative z-10 px-6 pb-8 pt-[68px] md:pt-[130px]"
-        style={{ color: "var(--cdn-primary)", fontFamily: "var(--cdn-serif)" }}
-      >
-        <h2 className="cdn-title relative text-center text-[20px] font-bold md:text-[24px]">
-          {t.guestbook}
-        </h2>
-
-        <form onSubmit={submit} className="mx-auto mt-5 max-w-[300px] rounded-[8px] p-4 md:max-w-[400px]">
-          <input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder={t.guestNamePlaceholder}
-            className="mb-3 w-full rounded-[8px] border bg-transparent px-3 py-2 text-sm outline-none"
-            style={inputStyle}
+      <div className="relative z-10 px-6 pb-10 pt-10 md:pt-12">
+        <div
+          className="relative mx-auto max-w-[540px]"
+          style={{ color: "var(--cdn-primary)", fontFamily: "var(--cdn-serif)" }}
+        >
+          {/* Paper-note backdrop, stretched to cover the whole card so the
+              form + wishes never spill off the bottom edge of the paper. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={ASSETS.paperNote}
+            alt=""
+            aria-hidden
+            className="pointer-events-none absolute inset-0 h-full w-full select-none object-fill opacity-95 drop-shadow-[4px_4px_4px_rgba(0,0,0,0.25)]"
           />
-          <textarea
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder={t.guestWishPlaceholder}
-            className="h-[60px] w-full resize-none rounded-[8px] border bg-transparent px-3 py-2 text-sm outline-none md:h-[130px]"
-            style={inputStyle}
-          />
-          <button
-            type="submit"
-            className="mt-3 w-full rounded-full px-5 py-2 text-sm tracking-wide transition-opacity hover:opacity-90"
-            style={{ backgroundColor: "var(--cdn-primary)", color: "var(--cdn-light)" }}
-          >
-            {t.submitWishText}
-          </button>
-          {saved && (
-            <p className="cdn-fade-in mt-2 text-center text-xs" style={{ color: "var(--cdn-primary)" }}>
-              {t.wishSavedText}
-            </p>
-          )}
-        </form>
 
-        <div className="mx-auto mt-6 max-w-[300px] space-y-3 md:max-w-[400px]">
-          {wishes.length === 0 ? (
-            <p className="text-center text-sm italic" style={{ color: "var(--cdn-muted)" }}>
-              {t.noWishesYet}
-            </p>
-          ) : (
-            wishes.map((w, i) => (
-              <div
-                key={i}
-                className="rounded-[8px] border p-4 text-sm"
-                style={{
-                  borderColor: "rgba(124,106,96,0.33)",
-                  backgroundColor: "rgba(255,255,255,0.55)",
-                }}
+          {/* Padding is a % so it tracks the paper image's built-in margins at
+              every width. Left is larger: the leaf sprig pokes onto the lower
+              ~19% of the card's left side, so content must clear it. */}
+          <div className="relative z-10 pb-11 pl-[19%] pr-[19%] pt-10 md:pb-12 md:pt-12">
+            <h2 className="cdn-title text-center text-[20px] font-bold md:text-[24px]">
+              {t.guestbook}
+            </h2>
+
+            <form onSubmit={submit} className="mt-5">
+              <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder={t.guestNamePlaceholder}
+                className="mb-3 w-full rounded-[8px] border bg-transparent px-3 py-2 text-sm outline-none"
+                style={inputStyle}
+              />
+              <textarea
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder={t.guestWishPlaceholder}
+                className="h-[70px] w-full resize-none rounded-[8px] border bg-transparent px-3 py-2 text-sm outline-none md:h-[120px]"
+                style={inputStyle}
+              />
+              <button
+                type="submit"
+                className="mt-3 w-full rounded-full px-5 py-2 text-sm tracking-wide transition-opacity hover:opacity-90"
+                style={{ backgroundColor: "var(--cdn-primary)", color: "var(--cdn-light)" }}
               >
-                <p className="font-semibold" style={{ color: "var(--cdn-primary)" }}>
-                  {w.name}
+                {t.submitWishText}
+              </button>
+              {saved && (
+                <p className="cdn-fade-in mt-2 text-center text-xs" style={{ color: "var(--cdn-primary)" }}>
+                  {t.wishSavedText}
                 </p>
-                <p className="mt-1" style={{ color: "var(--cdn-muted)" }}>
-                  {w.message}
+              )}
+            </form>
+
+            <div className="mt-6 space-y-3">
+              {wishes.length === 0 ? (
+                <p className="text-center text-sm italic" style={{ color: "var(--cdn-muted)" }}>
+                  {t.noWishesYet}
                 </p>
-              </div>
-            ))
-          )}
+              ) : (
+                wishes.map((w, i) => (
+                  <div
+                    key={i}
+                    className="rounded-[8px] border p-4 text-sm"
+                    style={{
+                      borderColor: "rgba(124,106,96,0.33)",
+                      backgroundColor: "rgba(255,255,255,0.55)",
+                    }}
+                  >
+                    <p className="font-semibold" style={{ color: "var(--cdn-primary)" }}>
+                      {w.name}
+                    </p>
+                    <p className="mt-1" style={{ color: "var(--cdn-muted)" }}>
+                      {w.message}
+                    </p>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>

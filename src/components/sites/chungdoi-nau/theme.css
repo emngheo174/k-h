@@ -67,6 +67,11 @@
   opacity: 0.4;
 }
 
+/* All interactive buttons use a pointer cursor (disabled ones stay default). */
+.cdn-root button:not(:disabled) {
+  cursor: pointer;
+}
+
 /* Section titles */
 .cdn-title {
   font-family: var(--cdn-serif);
