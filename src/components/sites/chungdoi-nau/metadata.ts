@@ -50,10 +50,13 @@ export function createMetadata(side: Side, path?: string): Metadata {
       url: canonicalPath,
       images: [
         {
-          // url: invitation.heroPhoto,
-          url: "/sites/chungdoi-nau/og-v3.jpg",
+          // Baseline (non-progressive) JPEG: Facebook can fail to build a
+          // thumbnail from a progressive JPEG, showing title/description but no
+          // image. A fresh filename also sidesteps any stale cached fetch.
+          url: "/sites/chungdoi-nau/og-v4.jpg",
           width: 1200,
           height: 630,
+          type: "image/jpeg",
           alt: `${names} — Thiệp cưới`,
         },
       ],
@@ -63,7 +66,7 @@ export function createMetadata(side: Side, path?: string): Metadata {
       title,
       description,
       // images: [invitation.heroPhoto],
-      images: ["/sites/chungdoi-nau/og-v3.jpg"],
+      images: ["/sites/chungdoi-nau/og-v4.jpg"],
     },
     robots: {
       index: true,
