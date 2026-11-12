@@ -216,13 +216,30 @@ export function Gallery() {
                       // so the shown strip needs ~2x the frame's width in source
                       // pixels. Request a bigger variant than the box width or
                       // wide photos render soft before the lightbox opens.
-                      sizes="(min-width: 768px) 720px, 480px"
+                      sizes="(min-width: 768px) 720px, 48sa0px"
                       quality={90}
                       className="object-cover"
                       style={{
                         objectPosition: `${img.position.x * 100}% ${img.position.y * 100}%`,
                       }}
                     />
+                    {/* Zoom affordance so people know the active photo opens full-size. */}
+                    {isCenter && (
+                      <button
+                        type="button"
+                        aria-label="Phóng to ảnh"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setOpen(true);
+                        }}
+                        className="absolute bottom-2.5 right-2.5 z-[120] flex h-9 w-9 items-center justify-center rounded-full text-white backdrop-blur-sm transition-transform hover:scale-110"
+                        style={{ backgroundColor: "rgba(44,34,39,0.5)" }}
+                      >
+                        <svg className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35M10.5 7.5v6m3-3h-6M16.5 10.5a6 6 0 11-12 0 6 6 0 0112 0z" />
+                        </svg>
+                      </button>
+                    )}
                   </div>
                 );
               })}
