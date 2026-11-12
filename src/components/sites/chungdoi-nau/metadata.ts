@@ -6,8 +6,13 @@ import { parseDate } from "./format";
 // absolute links; falls back to localhost during development.
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
-/** Per-side metadata: names run host-first and the venue matches the host. */
-export function createMetadata(side: Side): Metadata {
+/**
+ * Per-side metadata: names run host-first and the venue matches the host.
+ * `path` is the canonical/og:url for this route; pass "/" for the home page so
+ * a shared root link is not re-attributed by Facebook to "/chu-re".
+ */
+export function createMetadata(side: Side, path?: string): Metadata {
+  const canonicalPath = path ?? (side === "bride" ? "/co-dau" : "/chu-re");
   const view = getCoupleView(side);
   const date = parseDate(view.date);
   const prettyDate = `${date.weekday}, ${date.day}.${date.month}.${date.year}`;
@@ -34,7 +39,7 @@ export function createMetadata(side: Side): Metadata {
     ],
     authors: [{ name: names }],
     alternates: {
-      canonical: side === "bride" ? "/co-dau" : "/chu-re",
+      canonical: canonicalPath,
     },
     openGraph: {
       title,
@@ -42,7 +47,7 @@ export function createMetadata(side: Side): Metadata {
       siteName: "Chung Đôi",
       locale: "vi_VN",
       type: "website",
-      url: side === "bride" ? "/co-dau" : "/chu-re",
+      url: canonicalPath,
       images: [
         {
           // url: invitation.heroPhoto,
