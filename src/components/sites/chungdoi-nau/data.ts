@@ -74,7 +74,7 @@ export const invitation: InvitationData = {
   galleryImages: [
     { src: "/sites/chungdoi-nau/gallery/_ATU4907.jpg", position: { x: 0.5, y: 0.5 } },
     { src: "/sites/chungdoi-nau/gallery/_ATU5268.jpg", position: { x: 0.5, y: 0.5 } },
-    { src: "/sites/chungdoi-nau/gallery/_ATU5069.jpg", position: { x: 0.5, y: 0.5 } },
+    { src: "/sites/chungdoi-nau/gallery/_ATU5459.jpg", position: { x: 0.5, y: 0.5 } },
     { src: "/sites/chungdoi-nau/gallery/_ATU5451.jpg", position: { x: 0.5, y: 0.5 } },
     { src: "/sites/chungdoi-nau/gallery/TUA01485.jpg", position: { x: 0.5, y: 0.5 } },
     { src: "/sites/chungdoi-nau/gallery/_ATU5668.jpg", position: { x: 0.5, y: 0.5 } },

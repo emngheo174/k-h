@@ -212,7 +212,11 @@ export function Gallery() {
                       src={img.src}
                       alt={`Ảnh cưới ${i + 1}`}
                       fill
-                      sizes="(min-width: 768px) 360px, 260px"
+                      // The portrait frame crops landscape photos (object-cover),
+                      // so the shown strip needs ~2x the frame's width in source
+                      // pixels. Request a bigger variant than the box width or
+                      // wide photos render soft before the lightbox opens.
+                      sizes="(min-width: 768px) 720px, 480px"
                       quality={90}
                       className="object-cover"
                       style={{
